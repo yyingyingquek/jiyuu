@@ -28,12 +28,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# AUTH_USER_MODEL = 'account.Account'
-#
-# AUTHENTICATION_BACKENDS = (
-#     'django.contrib.auth.backends.AllowAllUsersModelBackend',
-#     'account.backends.CaseInsensitiveModelBackend',
-# )
+AUTH_USER_MODEL = 'account.Account'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.AllowAllUsersModelBackend',
+    'account.backends.CaseInsensitiveModelBackend',
+)
 
 # Application definition
 
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'account',
+    'account',
     'main_app',
     'api_with_jwt'
 ]
@@ -131,6 +131,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = 'images/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+MEDIA_ROOT = 'static/images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

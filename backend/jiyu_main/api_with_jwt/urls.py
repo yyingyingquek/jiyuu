@@ -1,10 +1,9 @@
 from django.urls import path
-# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-# from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
-
+from . import views
 
 urlpatterns = [
-    path('token/', TokenObtainPairView.as_view(), name='token'),
-    path('token/refresh', TokenRefreshView.as_view(), name='token-refresh'),
+    # login
+    path('token/', views.CustomTokenObtainPairView.as_view(), name='token'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token-refresh'),
 ]

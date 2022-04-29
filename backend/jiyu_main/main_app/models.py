@@ -1,6 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+# from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 
@@ -9,14 +9,14 @@ from django.contrib.auth.models import User
 # superusers can add many product
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     product_name = models.CharField(max_length=200)
     product_description = models.TextField()
     product_price = models.DecimalField(max_digits=8, decimal_places=2)
-    # product_image = models.ImageField()
+    product_image = models.ImageField(null=True, blank=True)
     product_size = models.CharField(max_length=20)
     date_created = models.DateTimeField(auto_now_add=True)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     num_of_reviews = models.IntegerField(null=True, default=0)
 
     def __str__(self):
@@ -28,7 +28,7 @@ class Product(models.Model):
 class Review(models.Model):
     id = models.AutoField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     rating = models.IntegerField(null=True, blank=True)
     comment = models.TextField(null=True)
@@ -41,7 +41,7 @@ class Review(models.Model):
 # 1 user can place many orders
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     order_created = models.DateTimeField(auto_now_add=True)
     payment_method = models.CharField(max_length=200)
     price_paid = models.DecimalField(max_digits=8, decimal_places=2)
