@@ -32,6 +32,18 @@ class CreateProduct(APIView):
             return Response('error with creating product :(')
 
 
+class UpdateProduct(APIView):
+    permission_classes = (IsAdminUser,)
+
+    def patch(self, request, pk):
+        product = Product.objects.get(id=pk)
+        serializer = ProductSerializer(instance=product, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+
 class DeleteProduct(APIView):
     permission_classes = (IsAdminUser,)
 
