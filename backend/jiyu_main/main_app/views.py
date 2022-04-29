@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Product
 from .serializers import ProductSerializer
+from rest_framework.permissions import IsAdminUser
 
 
 # Create your views here.
@@ -17,3 +18,24 @@ class SingleProductDetail(APIView):
         products = Product.objects.get(id=pk)
         serializer = ProductSerializer(products, many=False)
         return Response(serializer.data)
+
+
+class CreateProduct(APIView):
+    permission_classes = (IsAdminUser,)
+
+    def post(self, request):
+        serializer = ProductSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response('error with creating product :(')
+
+
+class DeleteProduct(APIView):
+    permission_classes = (IsAdminUser,)
+
+    def delete(self, request, pk):
+        product = Product.objects.get(id=pk)
+        product.delete()
+        return Response('deleted product')
