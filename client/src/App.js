@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <Header />
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+      <h1 class="p-4 text-3xl text-center font-bold underline">Hello world!</h1>
       <Footer />
     </div>
   );

@@ -3,7 +3,7 @@ import React from "react";
 const header = () => {
   return (
     <nav class="bg-white shadow">
-      <div class="text-center">
+      <div class="text-center p-4">
         <a
           class="text-gray-800 text-xl font-bold md:text-5xl hover:text-gray-700"
           href="#"
