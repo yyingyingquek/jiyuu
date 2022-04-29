@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Product
-from .serializers import ProductSerializer
+from main_app.models import Product
+from main_app.serializers import ProductSerializer
 from rest_framework.permissions import IsAdminUser
 
 
