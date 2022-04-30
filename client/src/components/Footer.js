@@ -2,65 +2,60 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="p-4 bg-white sm:p-6">
-      <div class="md:flex md:justify-around">
-        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-          <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
+    <footer className="p-4 bg-white sm:p-6">
+      <hr className="my-2 border-gray-200 sm:mx-auto " />
+      <div className="md:flex md:justify-around">
+        <div className="grid grid-cols-2 gap-8 md:gap-10 md:grid-cols-3">
+          <div className="px-4">
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
               Links
             </h2>
-            <ul class="text-gray-600 dark:text-gray-400">
-              <li class="mb-4">
-                <a href="https://flowbite.com" class="hover:text-indigo-500">
+            <ul className="text-gray-600 dark:text-gray-400">
+              <li className="mb-4">
+                <a href="/login" class="hover:text-indigo-500">
                   Login/ Register
                 </a>
               </li>
               <li>
-                <a
-                  href="https://tailwindcss.com/"
-                  class="hover:text-indigo-500"
-                >
+                <a href="/sizing" className="hover:text-indigo-500">
                   Sizing
                 </a>
               </li>
             </ul>
           </div>
-          <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
+          <div className="px-4">
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
               About us
             </h2>
-            <ul class="text-gray-600 dark:text-gray-400">
-              <li class="mb-4">
-                <a
-                  href="https://github.com/themesberg/flowbite"
-                  class="hover:text-indigo-500 "
-                >
+            <ul className="text-gray-600 dark:text-gray-400">
+              <li className="mb-4">
+                <a href="/brand" className="hover:text-indigo-500 ">
                   Our Brand
                 </a>
               </li>
             </ul>
           </div>
-          <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">
+          <div className="px-4">
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">
               Contact Us
             </h2>
-            <ul class="text-gray-600 dark:text-gray-400">
-              <li class="mb-4">
-                <a href="#" class="hover:text-indigo-500">
+            <ul className="text-gray-600 dark:text-gray-400">
+              <li className="mb-4">
+                <a href="/email" className="hover:text-indigo-500">
                   Email
                 </a>
               </li>
             </ul>
             {/* socials */}
-            <div class="flex mt-4 space-x-6 sm:justify-left sm:mt-0">
+            <div className="flex mt-4 space-x-6 sm:justify-left sm:mt-0">
               {/* facebook */}
               <a
                 href="https://www.facebook.com/JiyuActive"
-                class="text-gray-500 hover:text-gray-900 "
+                className="text-gray-500 hover:text-gray-900 "
                 target="_blank"
               >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -75,11 +70,11 @@ const Footer = () => {
               {/* instagram icon */}
               <a
                 href="https://www.instagram.com/jiyu_active/"
-                class="text-gray-500 hover:text-gray-900 "
+                className="text-gray-500 hover:text-gray-900 "
                 target="_blank"
               >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -95,9 +90,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr class="my-2 border-gray-200 sm:mx-auto " />
-      <div class="sm:flex sm:items-center sm:justify-between">
-        <span class="text-xs text-gray-500 sm:text-center dark:text-gray-400">
+      {/* <hr className="my-1 border-gray-200 sm:mx-auto " /> */}
+      <div className="sm:flex sm:items-center sm:justify-center py-4">
+        <span className="text-xs text-gray-500 sm:text-center dark:text-gray-400">
           © 2022 Placeholder text
         </span>
       </div>

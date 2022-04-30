@@ -2,25 +2,25 @@ import React from "react";
 
 const header = () => {
   return (
-    <nav class="bg-white shadow">
-      <div class="text-center p-4">
+    <nav className="bg-white shadow">
+      <div className="text-center p-4">
         <a
-          class="text-gray-800 text-xl font-bold md:text-5xl hover:text-gray-700"
+          className="text-gray-800 text-xl font-bold md:text-5xl hover:text-gray-700"
           href="#"
         >
           Jiyu
         </a>
       </div>
-      <div class="container mx-auto px-6 py-3 md:flex md:justify-center md:items-center">
-        <div class="flex justify-center items-center">
+      <div className="container mx-auto px-6 py-3 md:flex md:justify-center md:items-center">
+        <div className="flex justify-center items-center">
           {/* <!-- Mobile menu button --> */}
-          <div class="flex md:hidden">
+          <div className="flex md:hidden">
             <button
               type="button"
-              class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+              className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
               aria-label="toggle menu"
             >
-              <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+              <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
                 <path
                   fill-rule="evenodd"
                   d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
@@ -31,39 +31,42 @@ const header = () => {
         </div>
 
         {/* <!-- Mobile Menu open: "block", Menu closed: "hidden" --> */}
-        <div class="md:flex items-center">
-          <div class="flex flex-col md:flex-row md:mx-6">
+        <div className="md:flex items-center">
+          <div className="flex flex-col md:flex-row md:mx-6">
             <a
-              class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-              href="#"
+              className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+              href="/"
             >
               Home
             </a>
             <a
-              class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-              href="#"
+              className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+              href="/shop"
             >
               Shop
             </a>
             <a
-              class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-              href="#"
+              className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+              href="/lookbook"
             >
               Lookbook
             </a>
             <a
-              class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-              href="#"
+              className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+              href="/placeholder"
             >
-              Login
+              Placeholder
             </a>
           </div>
           {/* cart */}
           <div>
-            <div class="flex justify-center md:block">
-              <a class="relative text-gray-700 hover:text-gray-600" href="#">
+            <div className="flex justify-center md:block">
+              <a
+                className="relative text-gray-700 hover:text-gray-600"
+                href="/cart"
+              >
                 <svg
-                  class="h-5 w-5"
+                  className="h-5 w-5"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +80,7 @@ const header = () => {
                   />
                 </svg>
 
-                <span class="absolute top-0 left-0 rounded-full bg-indigo-500 text-white p-1 text-xs"></span>
+                <span className="absolute top-0 left-0 rounded-full bg-indigo-500 text-white p-1 text-xs"></span>
               </a>
             </div>
           </div>
