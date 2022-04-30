@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import placeholder from "../images/placeholder.jpeg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+
 
 function Product(props) {
 

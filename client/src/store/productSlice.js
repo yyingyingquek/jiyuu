@@ -32,6 +32,8 @@ const productSlice = createSlice({
   },
 });
 
+// exporting the actions
 export const productActions = productSlice.actions;
 
+// exporting full reducer
 export default productSlice.reducer;
