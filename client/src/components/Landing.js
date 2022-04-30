@@ -1,5 +1,6 @@
 import React from "react";
 import placeholder from "../images/placeholder.jpeg";
+import { NavLink } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -18,9 +19,12 @@ const Landing = () => {
                 cupidatat non proident, sunt in culpa qui officia deserunt
                 mollit anim id est laborum.
               </p>
-              <a href="/" className="block mt-8 text-indigo-700 underline">
-                Experienced team
-              </a>
+              <NavLink
+                to="/shop"
+                className="block mt-8 border-2 w-24 text-center hover:bg-indigo-300"
+              >
+                Shop Now
+              </NavLink>
             </div>
 
             <div className="mt-8 md:mt-0 md:w-1/2">
@@ -62,9 +66,12 @@ const Landing = () => {
                 cupidatat non proident, sunt in culpa qui officia deserunt
                 mollit anim id est laborum.
               </p>
-              <a href="/" className="block mt-8 text-indigo-700 underline">
-                Experienced team
-              </a>
+              <NavLink
+                to="/shop"
+                className="block mt-8 border-2 w-24 text-center hover:bg-indigo-300"
+              >
+                Shop Now
+              </NavLink>
             </div>
           </div>
         </div>

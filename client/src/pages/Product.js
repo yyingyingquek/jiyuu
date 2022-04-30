@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import placeholder from "../images/placeholder.jpeg";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function Product(props) {
+
+  let navigate = useNavigate();
+  console.log(props);
+
+  const handleProductClick = (id) => {
+    navigate(`/products/${id}`);
+  };
+
   const mapProduct = props.product.map((product) => {
     return (
-      <>
-        {console.log(product.product_name)}
+      <div key={product.id}>
+        {/* {console.log(product.product_name)} */}
         <div className="w-full max-w-sm py-4 mx-auto my-1 rounded-md shadow-md overflow-hidden">
           <div
             className="flex items-end justify-end h-96 w-full bg-cover bg-center"
             style={{ backgroundImage: `url(${placeholder})` }}
+            onClick={() => handleProductClick(product.id)}
           >
             <button className="p-2 rounded-full bg-indigo-600 text-white mx-5 -mb-4 hover:bg-indigo-500 focus:outline-none focus:bg-blue-500">
               <svg
@@ -30,7 +42,7 @@ function Product(props) {
             <span className="text-gray-500 mt-2">{product.product_price}</span>
           </div>
         </div>
-      </>
+      </div>
     );
   });
 

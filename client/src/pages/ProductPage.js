@@ -14,7 +14,7 @@ const ProductPage = () => {
 
   const fetchProducts = async () => {
     const response = await axios(config);
-    console.log(response.data);
+    // console.log(response.data);
     setProduct(response.data);
     return response.data;
   };
@@ -25,10 +25,9 @@ const ProductPage = () => {
 
   return (
     <>
-      <div class="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 px-4">
+      <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 px-4">
         <Product product={product} />
       </div>
-
     </>
   );
 };
