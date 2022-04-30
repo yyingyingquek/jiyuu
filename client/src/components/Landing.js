@@ -23,8 +23,8 @@ const Landing = () => {
               </a>
             </div>
 
-            <div class="mt-8 md:mt-0 md:w-1/2">
-              <div class="flex items-center justify-center">
+            <div className="mt-8 md:mt-0 md:w-1/2">
+              <div className="flex items-center justify-center">
                 <div className="max-w-md">
                   <img
                     className="object-cover object-center w-full rounded-md shadow"
