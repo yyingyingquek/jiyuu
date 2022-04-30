@@ -6,6 +6,13 @@ import store from "./store/store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
+
+// import productReducer, {productFetch} from "./store/productSlice"
+
+// store.dispatch(productFetch())
+
+
+
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>

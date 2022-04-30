@@ -40,31 +40,31 @@ const header = () => {
             >
               Home
             </NavLink>
-            <a
+            <NavLink
               className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-              href="/shop"
+              to="/shop"
             >
               Shop
-            </a>
-            <a
+            </NavLink>
+            <NavLink
               className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-              href="/lookbook"
+              to="/lookbook"
             >
               Lookbook
-            </a>
-            <a
+            </NavLink>
+            <NavLink
               className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-              href="/placeholder"
+              to="/placeholder"
             >
               Placeholder
-            </a>
+            </NavLink>
           </div>
           {/* cart */}
           <div>
             <div className="flex justify-center md:block">
-              <a
+              <NavLink
                 className="relative text-gray-700 hover:text-gray-600"
-                href="/cart"
+                to="/cart"
               >
                 <svg
                   className="h-5 w-5"
@@ -82,7 +82,7 @@ const header = () => {
                 </svg>
 
                 <span className="absolute top-0 left-0 rounded-full bg-indigo-500 text-white p-1 text-xs"></span>
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>
