@@ -22,11 +22,6 @@ const Footer = () => {
                   Register
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/sizing" className="hover:text-indigo-500">
-                  Sizing
-                </NavLink>
-              </li>
             </ul>
           </div>
           <div className="px-4">
@@ -35,8 +30,13 @@ const Footer = () => {
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
-                <NavLink to="/brand" className="hover:text-indigo-500 ">
+                <NavLink to="/aboutus" className="hover:text-indigo-500 ">
                   Our Brand
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/sizing" className="hover:text-indigo-500">
+                  Sizing
                 </NavLink>
               </li>
             </ul>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -56,46 +56,51 @@ const RegisterPage = () => {
   };
 
   return (
-    <form className="p-4" onSubmit={handleRegisterSubmit}>
-      <label htmlFor="email">Email: </label>
-      <input
-        className="border-2"
-        placeholder="email"
-        onChange={handleEmailChange}
-      ></input>{" "}
-      <br />
-      <label htmlFor="name">Name: </label>
-      <input
-        className="border-2"
-        placeholder="name"
-        onChange={handleNameChange}
-      ></input>{" "}
-      <br />
-      <label htmlFor="surname">Surname: </label>
-      <input
-        className="border-2"
-        placeholder="surname"
-        onChange={handleSurnameChange}
-      ></input>{" "}
-      <br />
-      <label htmlFor="password">Password: </label>
-      <input
-        className="border-2"
-        type="password"
-        placeholder="password"
-        onChange={handlePasswordChange}
-      ></input>
-      <br />
-      {/* <label htmlFor="confirm-password">Confirm Password: </label>
-      <input
-        className="border-2"
-        type="password"
-        placeholder="confirm password"
-        onChange={handleConfirmPasswordChange}
-      ></input>{" "} */}
-      {/* <br /> */}
-      <button className="border-2">Register</button>
-    </form>
+    <div className="flex items-center justify-center mt-16 mx-6">
+      <div className="p-6 max-w-sm w-full shadow rounded-md">
+        <h3 className="text-xl text-center">Register</h3>
+        <form className="p-4" onSubmit={handleRegisterSubmit}>
+          <label className="text-sm" htmlFor="email">
+            Email:{" "}
+          </label>
+          <input
+            className="form-input mt-1 px-1 w-full rounded-md border-2"
+            onChange={handleEmailChange}
+          ></input>{" "}
+          <br />
+          <label className="text-sm" htmlFor="name">
+            Name:{" "}
+          </label>
+          <input
+            className="form-input mt-1 px-1 w-full rounded-md border-2"
+            onChange={handleNameChange}
+          ></input>{" "}
+          <br />
+          <label className="text-sm" htmlFor="surname">
+            Surname:{" "}
+          </label>
+          <input
+            className="form-input mt-1 px-1 w-full rounded-md border-2"
+            onChange={handleSurnameChange}
+          ></input>{" "}
+          <br />
+          <label className="text-sm" htmlFor="password">
+            Password:{" "}
+          </label>
+          <input
+            className="form-input mt-1 px-1 w-full rounded-md border-2"
+            type="password"
+            onChange={handlePasswordChange}
+          ></input>
+          <br />
+          <div className="mt-3">
+            <button className="w-full py-2 px-4 text-center bg-indigo-500 rounded-md text-white text-sm hover:bg-indigo-400">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

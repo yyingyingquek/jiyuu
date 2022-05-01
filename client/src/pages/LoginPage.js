@@ -1,30 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { userActions } from "../store/userSlice";
 import axios from "axios";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassWord] = useState("");
-
-  //   const dispatch = useDispatch();
-
-  //   const storeAuth = useSelector((state) => {
-  //     state.user.auth;
-  //   });
-  //   const storeEmail = useSelector((state) => {
-  //     state.user.email;
-  //   });
-
-  //   const logInUser = (event) => {
-  //     event.preventDefault();
-  //     dispatch(userActions.login(email));
-  //   };
-
-  //   const logOutUser = () => {
-  //     dispatch(userActions.logout());
-  //   };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -55,9 +35,11 @@ const LoginPage = () => {
       data: data,
     };
 
-    const response = axios(config);
+    const response = axios(config).then((response) => {
+      localStorage.setItem("access_token", response.data.access);
+      localStorage.setItem("refresh_token", response.data.refresh);
+    });
     console.log(response);
-    return response;
   };
 
   const handleAdminLogIn = (event) => {
@@ -65,7 +47,7 @@ const LoginPage = () => {
     logIn();
     setEmail("");
     setPassWord("");
-    // navigate("/home");
+    navigate("/home");
   };
 
   return (
@@ -80,7 +62,7 @@ const LoginPage = () => {
               type="email"
               id="email"
               name="email"
-              className="form-input mt-1 block w-full rounded-md border-2 "
+              className="form-input mt-1 block w-full rounded-md border-2"
               //   required
               autoComplete="email"
               onChange={handleEmailChange}
@@ -103,7 +85,7 @@ const LoginPage = () => {
           <div className="mt-6">
             <button
               type="submit"
-              className="w-full py-2 px-4 text-center bg-indigo-600 rounded-md text-white text-sm hover:bg-indigo-500 focus:outline-none"
+              className="w-full py-2 px-4 text-center bg-indigo-500 rounded-md text-white text-sm hover:bg-indigo-400 focus:outline-none"
             >
               Login
             </button>

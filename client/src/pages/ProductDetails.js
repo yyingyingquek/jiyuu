@@ -48,7 +48,7 @@ function ProductDetails(props) {
   // adding to cart
   const handleAddToCart = () => {
     console.log(showProduct.id);
-    navigate(`/cart`);
+    // navigate(`/cart`);
   };
 
   // deleting product

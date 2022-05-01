@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import placeholder from "../images/placeholder.jpeg";
 import { NavLink } from "react-router-dom";
 
 const Landing = () => {
+  const [logIn, setLogIn] = useState(false);
+
+  let accessToken = localStorage.getItem("access_token");
+
+  const checkLogIn = () => {
+    if (accessToken !== null) {
+      setLogIn(true);
+    }
+  };
+
+  useEffect(() => {
+    checkLogIn();
+  }, [logIn]);
+
   return (
     <>
       <section className="bg-white justify-center">
