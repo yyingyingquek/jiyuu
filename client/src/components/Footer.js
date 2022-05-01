@@ -14,7 +14,12 @@ const Footer = () => {
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
                 <NavLink to="/login" className="hover:text-indigo-500">
-                  Login/ Register
+                  Login
+                </NavLink>
+              </li>
+              <li className="mb-4">
+                <NavLink to="/register" className="hover:text-indigo-500">
+                  Register
                 </NavLink>
               </li>
               <li>

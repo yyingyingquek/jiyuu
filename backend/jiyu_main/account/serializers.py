@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class RegisterUserSerializer(serializers.ModelSerializer):
-    token = serializers.SerializerMethodField(read_only=True)
+    # token = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Account

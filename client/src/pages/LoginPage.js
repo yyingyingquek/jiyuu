@@ -8,23 +8,23 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassWord] = useState("");
 
-//   const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
-//   const storeAuth = useSelector((state) => {
-//     state.user.auth;
-//   });
-//   const storeEmail = useSelector((state) => {
-//     state.user.email;
-//   });
+  //   const storeAuth = useSelector((state) => {
+  //     state.user.auth;
+  //   });
+  //   const storeEmail = useSelector((state) => {
+  //     state.user.email;
+  //   });
 
-//   const logInUser = (event) => {
-//     event.preventDefault();
-//     dispatch(userActions.login(email));
-//   };
+  //   const logInUser = (event) => {
+  //     event.preventDefault();
+  //     dispatch(userActions.login(email));
+  //   };
 
-//   const logOutUser = () => {
-//     dispatch(userActions.logout());
-//   };
+  //   const logOutUser = () => {
+  //     dispatch(userActions.logout());
+  //   };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -38,8 +38,8 @@ const LoginPage = () => {
 
   const logIn = async () => {
     const data = JSON.stringify({
-      email: "yingying@gmail.com",
-      password: "example123",
+      email: email,
+      password: password,
     });
 
     const config = {
@@ -47,6 +47,10 @@ const LoginPage = () => {
       url: "http://127.0.0.1:8000/jwt_api/token/",
       headers: {
         "Content-Type": "application/json",
+        Authorization: localStorage.getItem("access_token")
+          ? "JWT" + localStorage.getItem("access_token")
+          : null,
+        accept: "application/json",
       },
       data: data,
     };
