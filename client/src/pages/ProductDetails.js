@@ -43,7 +43,7 @@ function ProductDetails(props) {
       // console.log(data);
       setShowProduct(data);
     });
-  }, [description, productName, price]);
+  }, [showProduct, description, productName, price]);
 
   // adding to cart
   const handleAddToCart = () => {

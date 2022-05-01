@@ -8,7 +8,7 @@ from rest_framework import status
 
 # Create your views here.
 class AddOrder(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def post(self, request):
         user = request.user
@@ -22,7 +22,7 @@ class AddOrder(APIView):
 
 
 class GetOrderByID(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, request, pk):
         user = request.user

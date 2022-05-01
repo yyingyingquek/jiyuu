@@ -1,12 +1,14 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const header = () => {
+const Header = () => {
   let accessToken = localStorage.getItem("access_token");
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   const logOut = () => {
     accessToken = localStorage.removeItem("access_token");
+    accessToken = localStorage.removeItem("refresh_token");
+    navigate("/home");
   };
 
   return (
@@ -119,4 +121,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;
