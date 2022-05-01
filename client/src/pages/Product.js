@@ -3,15 +3,18 @@ import placeholder from "../images/placeholder.jpeg";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-
 function Product(props) {
-
   let navigate = useNavigate();
   console.log(props);
 
   const handleProductClick = (id) => {
     navigate(`/products/${id}`);
   };
+
+  const addNewProduct = () => {
+    navigate(`/newproduct`)
+  }
+
 
   const mapProduct = props.product.map((product) => {
     return (
@@ -46,7 +49,13 @@ function Product(props) {
     );
   });
 
-  return <>{mapProduct}</>;
+  return (
+    <>
+      
+      {mapProduct}
+      <button className="border-2 w-36 h-8" onClick={addNewProduct}>Add new product</button>
+    </>
+  );
 }
 
 export default Product;

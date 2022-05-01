@@ -21,7 +21,7 @@ class SingleProductDetail(APIView):
 
 
 class CreateProduct(APIView):
-    permission_classes = (IsAdminUser,)
+    # permission_classes = (IsAdminUser,)
 
     def post(self, request):
         serializer = ProductSerializer(data=request.data)

@@ -10,6 +10,7 @@ import SizingPage from "./pages/SizingPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import LoginPage from "./pages/LoginPage";
+import AddProduct from "./pages/AddProduct";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUsPage />}></Route>
           <Route path="/contact" element={<ContactUsPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/newproduct" element={<AddProduct />}></Route>
         </Routes>
       </main>
       <Footer />

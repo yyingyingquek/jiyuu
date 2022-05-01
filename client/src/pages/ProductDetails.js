@@ -31,10 +31,10 @@ function ProductDetails(props) {
 
   useEffect(() => {
     fetchProducts(id).then((data) => {
-      console.log(data);
+      // console.log(data);
       setShowProduct(data);
     });
-  }, []);
+  }, [showProduct]);
 
   const addToCartHandler = () => {
     console.log(showProduct.id);
