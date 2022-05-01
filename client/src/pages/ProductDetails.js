@@ -34,11 +34,27 @@ function ProductDetails(props) {
       // console.log(data);
       setShowProduct(data);
     });
-  }, [showProduct]);
+  }, []);
 
   const addToCartHandler = () => {
     console.log(showProduct.id);
     navigate(`/cart`);
+  };
+
+  const deleteProduct = async (id) => {
+    const config = {
+      method: "delete",
+      url: `http://127.0.0.1:8000/api/delete/${id}`,
+      headers: {},
+    };
+    const response = await axios(config);
+    return response.data;
+  };
+
+  const deleteProductHandler = () => {
+    console.log("deleted");
+    deleteProduct(id);
+    navigate("/shop");
   };
 
   return (
@@ -59,6 +75,10 @@ function ProductDetails(props) {
               </h3>
               <span className="text-gray-500 mt-3">
                 ${showProduct.product_price}
+              </span>{" "}
+              <br />
+              <span className="text-gray-500 mt-3">
+                {showProduct.product_description}
               </span>
               <hr className="my-3" />
               <div className="mt-2">
@@ -126,6 +146,12 @@ function ProductDetails(props) {
                   onClick={addToCartHandler}
                 >
                   Add to Cart
+                </button>
+                <button
+                  className="mx-1 px-3 py-2 bg-indigo-300 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                  onClick={deleteProductHandler}
+                >
+                  Delete item
                 </button>
               </div>
             </div>

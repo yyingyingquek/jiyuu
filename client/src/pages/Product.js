@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Product(props) {
   let navigate = useNavigate();
-  console.log(props);
+  // console.log(props);
 
   const handleProductClick = (id) => {
     navigate(`/products/${id}`);

@@ -45,7 +45,7 @@ class UpdateProduct(APIView):
 
 
 class DeleteProduct(APIView):
-    permission_classes = (IsAdminUser,)
+    # permission_classes = (IsAdminUser,)
 
     def delete(self, request, pk):
         product = Product.objects.get(id=pk)
