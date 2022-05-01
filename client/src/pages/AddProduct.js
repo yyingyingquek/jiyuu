@@ -52,8 +52,9 @@ const AddProduct = () => {
     addNewProduct();
     setProductName("");
     setDescription("");
+    setPrice("");
     setSize("");
-    // navigate("/shop");
+    navigate("/shop");
   };
 
   return (

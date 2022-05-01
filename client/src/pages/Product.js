@@ -12,9 +12,8 @@ function Product(props) {
   };
 
   const addNewProduct = () => {
-    navigate(`/newproduct`)
-  }
-
+    navigate(`/newproduct`);
+  };
 
   const mapProduct = props.product.map((product) => {
     return (
@@ -51,9 +50,10 @@ function Product(props) {
 
   return (
     <>
-      
       {mapProduct}
-      <button className="border-2 w-36 h-8" onClick={addNewProduct}>Add new product</button>
+      <button className="border-2 w-36 h-8" onClick={addNewProduct}>
+        Add new product
+      </button>
     </>
   );
 }

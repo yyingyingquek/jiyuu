@@ -33,9 +33,9 @@ class CreateProduct(APIView):
 
 
 class UpdateProduct(APIView):
-    permission_classes = (IsAdminUser,)
+    # permission_classes = (IsAdminUser,)
 
-    def patch(self, request, pk):
+    def put(self, request, pk):
         product = Product.objects.get(id=pk)
         serializer = ProductSerializer(instance=product, data=request.data, partial=True)
 
