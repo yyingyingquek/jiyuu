@@ -20,10 +20,10 @@ class ProductSerializer(serializers.ModelSerializer):
 
         return value
 
-    def get_review(self, obj):
-        reviews = obj.review_set.all()
-        serializer = ReviewSerializer(reviews, many=True)
-        return serializer.data
+    # def get_review(self, obj):
+    #     reviews = obj.review_set.all()
+    #     serializer = ReviewSerializer(reviews, many=True)
+    #     return serializer.data
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -39,23 +39,23 @@ class OrderProductSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    order = serializers.SerializerMethodField(read_only=True)
-    address = serializers.SerializerMethodField(read_only=True)
+    # order = serializers.SerializerMethodField(read_only=True)
+    # address = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Order
         fields = '__all__'
 
-    def get_order(self, obj):
-        items = obj.orderitem_set.all()
-        serializer = OrderProductSerializer(items, many=True)
-        return serializer.data
-
-    def get_address(self, obj):
-        address = AddressSerializer(obj.address, many=False)
-        return address
-
-    def get_user(self, obj):
-        user = obj.user
-        serializer = UserSerializer(user, many=False)
-        return serializer.data
+    # def get_order(self, obj):
+    #     items = obj.order_set.all()
+    #     serializer = OrderProductSerializer(items, many=True)
+    #     return serializer.data
+    #
+    # def get_address(self, obj):
+    #     address = AddressSerializer(obj.address, many=False)
+    #     return address
+    #
+    # def get_user(self, obj):
+    #     user = obj.user
+    #     serializer = UserSerializer(user, many=False)
+    #     return serializer.data

@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from main_app.models import Product
-from main_app.serializers import ProductSerializer
-from rest_framework.permissions import IsAdminUser
+from main_app.serializers import ProductSerializer, ReviewSerializer
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 
 # Create your views here.
@@ -51,3 +51,15 @@ class DeleteProduct(APIView):
         product = Product.objects.get(id=pk)
         product.delete()
         return Response('deleted product')
+
+
+# not working
+# class CreateReview(APIView):
+#     def post(self, request, pk):
+#         permission_classes = (IsAuthenticated,)
+#         review = Product.objects.get(id=pk)
+#         serializer = ReviewSerializer(instance=review, data=request.data, partial=True)
+#         if serializer.is_valid():
+#             serializer.save()
+#             print('save')
+#             return Response(serializer.data)

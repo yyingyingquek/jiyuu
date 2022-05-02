@@ -2,6 +2,8 @@ from django.db import models
 # from django.contrib.auth.models import User
 from django.conf import settings
 
+from account.models import Account
+
 # Create your models here.
 
 
@@ -9,12 +11,12 @@ from django.conf import settings
 # superusers can add many product
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
     product_name = models.CharField(max_length=200)
     product_description = models.TextField()
     product_price = models.DecimalField(max_digits=8, decimal_places=2)
     product_image = models.ImageField(null=True, blank=True)
-    product_size = models.CharField(max_length=20)
+    product_size = models.CharField(max_length=20, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     num_of_reviews = models.IntegerField(null=True, default=0)
@@ -28,20 +30,20 @@ class Product(models.Model):
 class Review(models.Model):
     id = models.AutoField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=200)
+    user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
+    title = models.CharField(max_length=250)
     rating = models.IntegerField(null=True, blank=True)
     comment = models.TextField(null=True)
 
     def __str__(self):
-        return str(self.rating)
+        return str(f'{self.id}, {self.product}, {self.title}')
 
 
 # the order placed
 # 1 user can place many orders
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
     order_created = models.DateTimeField(auto_now_add=True)
     payment_method = models.CharField(max_length=200)
     price_paid = models.DecimalField(max_digits=8, decimal_places=2)
@@ -54,7 +56,7 @@ class Order(models.Model):
     delivered_date = models.DateTimeField(auto_now_add=False, null=True, blank=True)
 
     def __str__(self):
-        return str(self.order_created)
+        return str(f'{self.id}, {self.user}')
 
 
 # cart items (relationship to connect product and order)
@@ -81,4 +83,4 @@ class Address(models.Model):
     shipping_price = models.DecimalField(max_digits=8, decimal_places=2)
 
     def __str__(self):
-        return self.order
+        return str(f'{self.id}, {self.order}, {self.address}')

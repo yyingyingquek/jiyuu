@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
   const [password, setPassWord] = useState("");
 
   const handleEmailChange = (event) => {
@@ -16,10 +15,6 @@ const RegisterPage = () => {
     setName(event.target.value);
   };
 
-  const handleSurnameChange = (event) => {
-    setSurname(event.target.value);
-  };
-
   const handlePasswordChange = (event) => {
     setPassWord(event.target.value);
   };
@@ -28,7 +23,6 @@ const RegisterPage = () => {
     const data = JSON.stringify({
       email: email,
       name: name,
-      surname: surname,
       password: password,
     });
 
@@ -74,14 +68,6 @@ const RegisterPage = () => {
           <input
             className="form-input mt-1 px-1 w-full rounded-md border-2"
             onChange={handleNameChange}
-          ></input>{" "}
-          <br />
-          <label className="text-sm" htmlFor="surname">
-            Surname:{" "}
-          </label>
-          <input
-            className="form-input mt-1 px-1 w-full rounded-md border-2"
-            onChange={handleSurnameChange}
           ></input>{" "}
           <br />
           <label className="text-sm" htmlFor="password">

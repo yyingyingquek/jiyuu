@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import cartContext from "../context/cartContext";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import placeholder from "../images/placeholder.jpeg";
 
-function ProductDetails(props) {
+function ProductDetails() {
+  // fetching states
   const [showProduct, setShowProduct] = useState([]);
+
+  // quantity change states
   const [quantity, setQuantity] = useState(1);
 
+  // editing states
   const [edit, setEdit] = useState(false);
   const [productName, setProductName] = useState(showProduct.product_name);
   const [description, setDescription] = useState(
     showProduct.product_description
   );
   const [price, setPrice] = useState(showProduct.product_price);
+
+  // cart states
+  const cartCtx = useContext(cartContext);
 
   // quantity
   const reduceQuantity = () => {
@@ -46,8 +54,12 @@ function ProductDetails(props) {
   }, [showProduct, description, productName, price]);
 
   // adding to cart
-  const handleAddToCart = () => {
-    console.log(showProduct.id);
+  let cartArr = [];
+
+  const handleAddArrToCart = () => {
+    // cartArr.push(showProduct);
+    console.log(showProduct);
+    cartCtx.setCart([...cartCtx.cart, showProduct]);
     // navigate(`/cart`);
   };
 
@@ -125,12 +137,17 @@ function ProductDetails(props) {
     // console.log(productName)
   };
 
+  const backToShop = () => {
+    navigate("/shop");
+  };
+
   return (
     <>
       <div className="my-8">
         <div className="container mx-auto px-6">
           <div className="md:flex md:items-center">
             <div className="w-full h-64 md:w-1/2 lg:h-96">
+              <button onClick={backToShop}>back to shop</button>
               <img
                 className="h-full w-full rounded-md object-cover max-w-lg mx-auto"
                 src={placeholder}
@@ -234,7 +251,7 @@ function ProductDetails(props) {
               <div className="flex items-center mt-6">
                 <button
                   className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
-                  onClick={handleAddToCart}
+                  onClick={handleAddArrToCart}
                 >
                   Add to Cart
                 </button>

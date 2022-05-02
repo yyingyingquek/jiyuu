@@ -9,6 +9,12 @@ urlpatterns = [
     path('create/', views.CreateProduct.as_view(), name='create-product'),
     path('update/<str:pk>', views.UpdateProduct.as_view(), name='create-product'),
     path('delete/<str:pk>', views.DeleteProduct.as_view(), name='delete-product'),
+    # review (not working)
+    # path('review/<str:pk>', views.CreateReview.as_view(), name='create-review'),
     # orders
+    path('add-order/', order_views.AddOrder.as_view(), name='add-order'),
+    path('view-order/<str:pk>', order_views.GetOrderByID.as_view(), name='view-order'),
+    # address
+    path('address/', order_views.CreateAddress.as_view(), name='address'),
 
 ]

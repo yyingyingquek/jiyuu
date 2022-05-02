@@ -1,7 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
+import cartContext from "../context/cartContext";
 import placeholder from "../images/placeholder.jpeg";
 
-const CartPage = () => {
+const CartPage = (props) => {
+  // console.log(props.value.cart);
+  const productsInCart = props.value.cart;
+  const cartCtx = useContext(cartContext);
+
+  const handleRemoveFromCart = (index) => {
+    // why does it remove all?????
+    // const filterCart = productsInCart.filter((element, i) => console.log(i !== index));
+    // console.log(filterCart);
+    // cartCtx.setCart(filterCart);
+
+    const newCart = productsInCart.slice(1)
+    cartCtx.setCart(newCart)
+    console.log(newCart)
+  };
+
+    const mapCart = productsInCart.map((item, index) => {
+    return (
+      
+        <div key={index}>
+          <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+            <div className="flex w-2/5">
+              <div className="w-20">
+                <img className="h-24" src={placeholder} alt="" />
+              </div>
+              <div className="flex flex-col justify-between ml-4 flex-grow">
+                <span className="font-bold text-sm">{item.product_name}</span>
+                <button
+                  className="font-semibold hover:text-red-500 text-gray-500 text-xs text-left"
+                  onClick={handleRemoveFromCart}
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+            <div className="flex justify-center w-1/5">
+              <h4 className="mx-2 text-center w-8">1</h4>
+            </div>
+
+            <span className="text-center w-1/5 font-semibold text-sm">
+              {item.product_price}
+            </span>
+            <span className="text-center w-1/5 font-semibold text-sm">
+              {item.product_price}
+            </span>
+          </div>
+        </div>
+      
+    );
+  });
+
   return (
     <>
       <div className="container mx-auto mt-10">
@@ -23,30 +74,7 @@ const CartPage = () => {
               Total
             </h3>
           </div>
-          <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-            <div className="flex w-2/5">
-              {/* product */}
-              <div className="w-20">
-                <img className="h-24" src={placeholder} alt="" />
-              </div>
-              <div className="flex flex-col justify-between ml-4 flex-grow">
-                <span className="font-bold text-sm">test 1</span>
-                <button className="font-semibold hover:text-red-500 text-gray-500 text-xs text-left">
-                  Remove
-                </button>
-              </div>
-            </div>
-            <div className="flex justify-center w-1/5">
-              <h4 className="mx-2 text-center w-8">1</h4>
-            </div>
-
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $400.00
-            </span>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $400.00
-            </span>
-          </div>
+          {mapCart}
 
           <button className="relative left-3/4 bg-indigo-500 font-semibold hover:bg-indigo-400 py-3 text-sm text-white uppercase w-32">
             Checkout

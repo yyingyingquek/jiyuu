@@ -1,3 +1,4 @@
+import React, { useState, useContext, Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,26 +14,33 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AddProduct from "./pages/AddProduct";
 
+import cartContext from "./context/cartContext";
+
 function App() {
+  const [cart, setCart] = useState([]);
+  console.log(cart)
+
   return (
     <div>
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<Navigate replace to="/home" />}></Route>
-          <Route path="/home" element={<Landing />}></Route>
-          <Route path="/shop" element={<ProductPage />}></Route>
-          <Route path="/products/:id" element={<ProductDetails />}></Route>
-          <Route path="/lookbook" element={<LookbookPage />}></Route>
-          <Route path="/cart" element={<CartPage />}></Route>
-          <Route path="/sizing" element={<SizingPage />}></Route>
-          <Route path="/aboutus" element={<AboutUsPage />}></Route>
-          <Route path="/contact" element={<ContactUsPage />}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/register" element={<RegisterPage />}></Route>
-          <Route path="/newproduct" element={<AddProduct />}></Route>
-        </Routes>
-      </main>
+      <cartContext.Provider value={{cart, setCart}}>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Navigate replace to="/home" />}></Route>
+            <Route path="/home" element={<Landing />}></Route>
+            <Route path="/shop" element={<ProductPage />}></Route>
+            <Route path="/products/:id" element={<ProductDetails />}></Route>
+            <Route path="/lookbook" element={<LookbookPage />}></Route>
+            <Route path="/cart" element={<CartPage value={{cart, setCart}}/>}></Route>
+            <Route path="/sizing" element={<SizingPage />}></Route>
+            <Route path="/aboutus" element={<AboutUsPage />}></Route>
+            <Route path="/contact" element={<ContactUsPage />}></Route>
+            <Route path="/login" element={<LoginPage />}></Route>
+            <Route path="/register" element={<RegisterPage />}></Route>
+            <Route path="/newproduct" element={<AddProduct />}></Route>
+          </Routes>
+        </main>
+      </cartContext.Provider>
       <Footer />
     </div>
   );
