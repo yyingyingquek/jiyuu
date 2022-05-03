@@ -3,12 +3,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
   let accessToken = localStorage.getItem("access_token");
+  let refreshToken = localStorage.getItem("refresh_token");
   let decodedToken = localStorage.getItem("decoded_token");
   let navigate = useNavigate();
 
   const logOut = () => {
     accessToken = localStorage.removeItem("access_token");
-    accessToken = localStorage.removeItem("refresh_token");
+    refreshToken = localStorage.removeItem("refresh_token");
     decodedToken = localStorage.removeItem("decoded_token");
     navigate("/home");
   };
@@ -65,12 +66,16 @@ const Header = () => {
                 Lookbook
               </NavLink>
 
-              <NavLink
-                className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-                to="/order"
-              >
-                Orders
-              </NavLink>
+              {accessToken === null ? (
+                ""
+              ) : (
+                <NavLink
+                  className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                  to="/order"
+                >
+                  Orders
+                </NavLink>
+              )}
             </div>
             {/* cart */}
             <div>

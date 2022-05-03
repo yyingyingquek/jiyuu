@@ -38,10 +38,10 @@ class GetOrderByID(APIView):
     # permission_classes = (IsAuthenticated,)
 
     def get(self, request, fk):
-        user = Account.objects.all()
-        print(user.id)
+        # user = Account.objects.all()
+        # print(user.id)
         # order = Order.objects.raw('SELECT * FROM main_app_order WHERE user_id=1')
-        order = Order.objects.get(id=fk)
+        order = Order.objects.filter(user=fk)
         # if user.is_admin or order.user == user:
         serializer = OrderSerializer(order, many=True)
         return Response(serializer.data)

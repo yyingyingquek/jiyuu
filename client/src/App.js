@@ -15,6 +15,7 @@ import RegisterPage from "./pages/RegisterPage";
 import AddProduct from "./pages/AddProduct";
 import CheckOutPage from "./pages/CheckOutPage";
 import OrderPage from "./pages/OrderPage";
+import PaymentPage from "./pages/PaymentPage";
 
 import cartContext from "./context/cartContext";
 
@@ -41,6 +42,7 @@ function App() {
               path="/checkout"
               element={<CheckOutPage value={{ cart, setCart }} />}
             ></Route>
+            <Route path="/payment" element={<PaymentPage value={{cart, setCart}}/>}></Route>
             <Route path="/order" element={<OrderPage />}></Route>
             <Route path="/sizing" element={<SizingPage />}></Route>
             <Route path="/aboutus" element={<AboutUsPage />}></Route>

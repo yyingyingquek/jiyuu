@@ -15,11 +15,11 @@ const CheckOutPage = (props) => {
     return (
       <div key={index}>
         <div className="flex justify-between mt-6">
-          {calPrice.push(item.showProduct.product_price)}
           <div className="flex">
+          {calPrice.push(item.showProduct.product_price)}
             <img
               className="h-20 w-20 object-cover rounded"
-              src={item.showProduct.product_image}
+              src={placeholder}
               alt=""
             />
             <div className="mx-3">
@@ -88,7 +88,7 @@ const CheckOutPage = (props) => {
     createOrder();
     setAddress("");
     setPostalCode(0);
-    // navigate("/orders");
+    navigate("/payment");
   };
 
   return (
@@ -104,7 +104,7 @@ const CheckOutPage = (props) => {
                 <div className="w-full lg:w-1/2 order-2">
                   <div className="flex items-center">
                     <button className="flex text-sm text-gray-700 ml-8 focus:outline-none">
-                      <span className="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">
+                      <span className="flex items-center justify-center border-2 border-indigo-500 rounded-full h-5 w-5 mr-2">
                         1
                       </span>{" "}
                       Shipping
@@ -125,12 +125,12 @@ const CheckOutPage = (props) => {
                         Shipping Cost
                       </h4>
                       <div className="mt-6">
-                        <button className="flex items-center justify-between w-full bg-white rounded-md border-2 border-blue-500 p-4 focus:outline-none">
+                        <button className="flex items-center justify-between w-full bg-white rounded-md border-2 border-indigo-500 p-4 focus:outline-none">
                           <label className="flex items-center">
                             <input
                               readOnly
                               type="radio"
-                              className="form-radio h-5 w-5 text-blue-600"
+                              className="form-radio h-5 w-5 text-indigo-500"
                               checked
                             />
                             <span className="ml-2 text-sm text-gray-700">
@@ -168,7 +168,7 @@ const CheckOutPage = (props) => {
                           </label>
                         </div>
                         <div className="flex items-center justify-between mt-8">
-                          <button className="flex items-center px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                          <button className="flex items-center px-3 py-2 bg-indigo-500 text-white text-sm font-medium rounded-md hover:bg-indigo-400 focus:outline-none focus:bg-indigo-400">
                             <span>Payment</span>
                             <svg
                               className="h-5 w-5 mx-2"

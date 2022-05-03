@@ -14,5 +14,5 @@ urlpatterns = [
     # orders
     path('add-order/', order_views.AddOrder.as_view(), name='add-order'),
     path('view-order/', order_views.GetAllOrder.as_view(), name='view-order'),
-    path('view-order/<str:id>', order_views.GetOrderByID.as_view(), name='own-order'),
+    path('view-order/<str:fk>/', order_views.GetOrderByID.as_view(), name='own-order'),
 ]
