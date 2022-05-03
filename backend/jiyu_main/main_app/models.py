@@ -45,7 +45,9 @@ class Order(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
     order_created = models.DateTimeField(auto_now_add=True)
-    payment_method = models.CharField(max_length=200)
+    payment_method = models.CharField(max_length=200, null=True, blank=True)
+    address = models.CharField(max_length=300)
+    postal_code = models.IntegerField()
     price_paid = models.DecimalField(max_digits=8, decimal_places=2)
     shipping = models.DecimalField(max_digits=8, decimal_places=2)
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
@@ -75,12 +77,12 @@ class Order_Product(models.Model):
 
 
 # 1 order to 1 shipping address
-class Address(models.Model):
-    id = models.AutoField(primary_key=True)
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, null=True)
-    address = models.CharField(max_length=300)
-    postal_code = models.CharField(max_length=6)
-    shipping_price = models.DecimalField(max_digits=8, decimal_places=2)
-
-    def __str__(self):
-        return str(f'{self.id}, {self.order}, {self.address}')
+# class Address(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     order = models.OneToOneField(Order, on_delete=models.CASCADE, null=True)
+#     address = models.CharField(max_length=300)
+#     postal_code = models.CharField(max_length=6)
+#     shipping_price = models.DecimalField(max_digits=8, decimal_places=2)
+#
+#     def __str__(self):
+#         return str(f'{self.id}, {self.order}, {self.address}')

@@ -6,7 +6,6 @@ const AddProduct = () => {
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [size, setSize] = useState("");
 
   const handleProductNameChange = (event) => {
     setProductName(event.target.value);
@@ -20,16 +19,11 @@ const AddProduct = () => {
     setPrice(event.target.value);
   };
 
-  const handleSizeChange = (event) => {
-    setSize(event.target.value);
-  };
-
   const addNewProduct = async () => {
     const data = JSON.stringify({
       product_name: productName,
       product_description: description,
       product_price: price,
-      product_size: size,
     });
 
     const config = {
@@ -52,8 +46,7 @@ const AddProduct = () => {
     addNewProduct();
     setProductName("");
     setDescription("");
-    setPrice("");
-    setSize("");
+    setPrice(0);
     navigate("/shop");
   };
 
@@ -73,8 +66,6 @@ const AddProduct = () => {
           onChange={handlePriceChange}
         ></input>
         <br />
-        <label htmlFor="size">Size: </label>
-        <input className="border-2" onChange={handleSizeChange}></input> <br />
         <button className="border-2">Add Product</button>
       </form>
     </div>

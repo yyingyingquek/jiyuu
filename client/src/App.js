@@ -13,16 +13,18 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AddProduct from "./pages/AddProduct";
+import CheckOutPage from "./pages/CheckOutPage";
+import OrderPage from "./pages/OrderPage";
 
 import cartContext from "./context/cartContext";
 
 function App() {
   const [cart, setCart] = useState([]);
-  console.log(cart)
+  console.log(cart);
 
   return (
     <div>
-      <cartContext.Provider value={{cart, setCart}}>
+      <cartContext.Provider value={{ cart, setCart }}>
         <Header />
         <main>
           <Routes>
@@ -31,7 +33,15 @@ function App() {
             <Route path="/shop" element={<ProductPage />}></Route>
             <Route path="/products/:id" element={<ProductDetails />}></Route>
             <Route path="/lookbook" element={<LookbookPage />}></Route>
-            <Route path="/cart" element={<CartPage value={{cart, setCart}}/>}></Route>
+            <Route
+              path="/cart"
+              element={<CartPage value={{ cart, setCart }} />}
+            ></Route>
+            <Route
+              path="/checkout"
+              element={<CheckOutPage value={{ cart, setCart }} />}
+            ></Route>
+            <Route path="/order" element={<OrderPage />}></Route>
             <Route path="/sizing" element={<SizingPage />}></Route>
             <Route path="/aboutus" element={<AboutUsPage />}></Route>
             <Route path="/contact" element={<ContactUsPage />}></Route>

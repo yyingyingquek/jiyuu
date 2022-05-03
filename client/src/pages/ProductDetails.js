@@ -19,17 +19,17 @@ function ProductDetails() {
   );
   const [price, setPrice] = useState(showProduct.product_price);
 
-  // cart states
-  const cartCtx = useContext(cartContext);
-
   // quantity
   const reduceQuantity = () => {
     setQuantity(quantity - 1);
   };
-
+  
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
   };
+  
+  // cart states
+  const cartCtx = useContext(cartContext);
 
   const { id } = useParams();
   let navigate = useNavigate();
@@ -54,12 +54,10 @@ function ProductDetails() {
   }, [showProduct, description, productName, price]);
 
   // adding to cart
-  let cartArr = [];
-
   const handleAddArrToCart = () => {
     // cartArr.push(showProduct);
     console.log(showProduct);
-    cartCtx.setCart([...cartCtx.cart, showProduct]);
+    cartCtx.setCart([...cartCtx.cart, {showProduct, quantity}]);
     // navigate(`/cart`);
   };
 

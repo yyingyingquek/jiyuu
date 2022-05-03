@@ -13,8 +13,6 @@ urlpatterns = [
     # path('review/<str:pk>', views.CreateReview.as_view(), name='create-review'),
     # orders
     path('add-order/', order_views.AddOrder.as_view(), name='add-order'),
-    path('view-order/<str:pk>', order_views.GetOrderByID.as_view(), name='view-order'),
-    # address
-    path('address/', order_views.CreateAddress.as_view(), name='address'),
-
+    path('view-order/', order_views.GetAllOrder.as_view(), name='view-order'),
+    path('view-order/<str:id>', order_views.GetOrderByID.as_view(), name='own-order'),
 ]

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -35,12 +36,23 @@ const LoginPage = () => {
       data: data,
     };
 
-    const response = axios(config).then((response) => {
+    const response = await axios(config).then((response) => {
+      console.log(response.data)
       localStorage.setItem("access_token", response.data.access);
       localStorage.setItem("refresh_token", response.data.refresh);
+      console.log(response);
+
+      const token = localStorage.getItem("access_token");
+      console.log(token);
+      const decoded = jwt_decode(token);
+      console.log(decoded);
+      localStorage.setItem('decoded_token', JSON.stringify(decoded))
+
     });
-    console.log(response);
+
+    // return response
   };
+  
 
   const handleAdminLogIn = (event) => {
     event.preventDefault();

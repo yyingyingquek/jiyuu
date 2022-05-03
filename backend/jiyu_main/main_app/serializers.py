@@ -26,10 +26,10 @@ class ProductSerializer(serializers.ModelSerializer):
     #     return serializer.data
 
 
-class AddressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Address
-        fields = '__all__'
+# class AddressSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Address
+#         fields = '__all__'
 
 
 class OrderProductSerializer(serializers.ModelSerializer):

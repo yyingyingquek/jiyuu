@@ -1,9 +1,10 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from main_app.models import Product, Order, Order_Product, Address
+from main_app.models import Product, Order, Order_Product
 from main_app.serializers import *
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import status
+from account.models import Account
 
 
 # Create your views here.
@@ -24,22 +25,34 @@ class AddOrder(APIView):
         return Response(serializer.data)
 
 
+class GetAllOrder(APIView):
+    # permission_classes = (IsAdmin,)
+
+    def get(self, request):
+        order = Order.objects.all()
+        serializer = OrderSerializer(order, many=True)
+        return Response(serializer.data)
+
+
 class GetOrderByID(APIView):
     # permission_classes = (IsAuthenticated,)
 
-    def get(self, request, pk):
-        user = request.user
-        order = Order.objects.get(id=pk)
+    def get(self, request, fk):
+        user = Account.objects.all()
+        print(user.id)
+        # order = Order.objects.raw('SELECT * FROM main_app_order WHERE user_id=1')
+        order = Order.objects.get(id=fk)
         # if user.is_admin or order.user == user:
-        serializer = OrderSerializer(order, many=False)
+        serializer = OrderSerializer(order, many=True)
         return Response(serializer.data)
 
 
-class CreateAddress(APIView):
-    def post(self, request):
-        serializer = AddressSerializer(data=request.data, many=False)
-        if serializer.is_valid():
-            serializer.save()
-        return Response(serializer.data)
 
 
+
+# class CreateAddress(APIView):
+#     def post(self, request):
+#         serializer = AddressSerializer(data=request.data, many=False)
+#         if serializer.is_valid():
+#             serializer.save()
+#         return Response(serializer.data)
