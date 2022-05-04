@@ -6,7 +6,7 @@ import cartContext from "../context/cartContext";
 import placeholder from "../images/placeholder.jpeg";
 
 const CheckOutPage = (props) => {
-  console.log(props.value.cart);
+  // console.log(props.value.cart);
   const checkOutItems = props.value.cart;
 
   const calPrice = [];
@@ -16,7 +16,7 @@ const CheckOutPage = (props) => {
       <div key={index}>
         <div className="flex justify-between mt-6">
           <div className="flex">
-          {calPrice.push(item.showProduct.product_price)}
+            {calPrice.push(item.showProduct.product_price)}
             <img
               className="h-20 w-20 object-cover rounded"
               src={placeholder}
@@ -36,13 +36,13 @@ const CheckOutPage = (props) => {
     );
   });
 
-  console.log(calPrice);
+  // console.log(calPrice);
 
   const toInt = calPrice.map(Number);
-  console.log(toInt);
+  // console.log(toInt);
 
   const totalPrice = toInt.reduce((a, b) => a + b).toFixed(2);
-  console.log(totalPrice);
+  // console.log(totalPrice);
 
   const [address, setAddress] = useState("");
   const [postalCode, setPostalCode] = useState(0);
@@ -55,8 +55,13 @@ const CheckOutPage = (props) => {
     setPostalCode(event.target.value);
   };
 
-  const getUser = JSON.parse(localStorage.getItem("decoded_token"));
-  console.log(getUser.user_id);
+  let getUser = "";
+  if (localStorage.getItem("decoded_token") === null) {
+    // console.log("0");
+  } else {
+    getUser = JSON.parse(localStorage.getItem("decoded_token"));
+    // console.log(getUser.user_id);
+  }
 
   const createOrder = async () => {
     const data = JSON.stringify({
@@ -84,11 +89,16 @@ const CheckOutPage = (props) => {
 
   let navigate = useNavigate();
   const handleOrderSubmit = (event) => {
-    event.preventDefault();
-    createOrder();
-    setAddress("");
-    setPostalCode(0);
-    navigate("/payment");
+    if (getUser === "") {
+      alert("Please login or register to check out");
+      navigate("/login");
+    } else {
+      event.preventDefault();
+      createOrder();
+      setAddress("");
+      setPostalCode(0);
+      navigate("/payment");
+    }
   };
 
   return (

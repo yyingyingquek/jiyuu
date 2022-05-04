@@ -33,13 +33,24 @@ const OrderPage = () => {
     getOrder();
   }, []);
 
-  return (
-    <div>
-      {orders.length === 0
-        ? "start shopping"
-        : "return their orders here if length > 0"}
-    </div>
-  );
+  let mapOrders = [];
+  if (orders.length !== 0) {
+    mapOrders = orders.map((order) => {
+      return (
+        <div>
+          order id: {order.id}
+          <br />
+          address: {order.address}
+          <br />
+          payment status: {order.payment_status} <br />
+          delivery date: {order.delivered_date} <br />
+          total price: {order.total_price}
+        </div>
+      );
+    });
+  }
+
+  return <div>{orders.length === 0 ? "start shopping" : mapOrders}</div>;
 };
 
 export default OrderPage;

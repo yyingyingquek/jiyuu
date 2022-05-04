@@ -30,7 +30,7 @@ function App() {
     <div>
       <userContext.Provider value={{ superUser, setSuperUser }}>
         <cartContext.Provider value={{ cart, setCart }}>
-          <Header />
+          <Header value={{ superUser, setSuperUser }} />
           <main>
             <Routes>
               <Route path="/" element={<Navigate replace to="/home" />}></Route>
@@ -43,8 +43,8 @@ function App() {
                 path="/products/:id"
                 element={<ProductDetails value={{ superUser, setSuperUser }} />}
               ></Route>
- 
-              <Route path="/lookbook" element={<LookbookPage />}></Route>
+
+              {/* <Route path="/lookbook" element={<LookbookPage />}></Route> */}
               <Route
                 path="/cart"
                 element={<CartPage value={{ cart, setCart }} />}
@@ -58,7 +58,7 @@ function App() {
                 element={<PaymentPage value={{ cart, setCart }} />}
               ></Route>
               <Route path="/order" element={<OrderPage />}></Route>
-              <Route path="/sizing" element={<SizingPage />}></Route>
+              {/* <Route path="/sizing" element={<SizingPage />}></Route> */}
               <Route path="/aboutus" element={<AboutUsPage />}></Route>
               <Route path="/contact" element={<ContactUsPage />}></Route>
               <Route path="/login" element={<LoginPage />}></Route>

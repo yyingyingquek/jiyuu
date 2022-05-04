@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import userContext from "../context/userContext";
 
 function Product(props) {
-  console.log(props.user);
+  // console.log(props.user);
 
   // const userCtx = useContext(userContext);
   let navigate = useNavigate();

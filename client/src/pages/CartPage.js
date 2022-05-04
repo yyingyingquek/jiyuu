@@ -9,15 +9,14 @@ const CartPage = (props) => {
   const productsInCart = props.value.cart;
   const cartCtx = useContext(cartContext);
 
-  const handleRemoveFromCart = (index) => {
-    // why does it remove all?????
-    // const filterCart = productsInCart.filter((element, i) => console.log(i !== index));
-    // console.log(filterCart);
-    // cartCtx.setCart(filterCart);
+  const handleRemoveFromCart = (id) => {
+    console.log(id);
 
-    const newCart = productsInCart.slice(1);
-    cartCtx.setCart(newCart);
-    console.log(newCart);
+    const filterCart = productsInCart.filter(
+      (element) => element.showProduct.id !== id
+    );
+    console.log(filterCart);
+    cartCtx.setCart(filterCart);
   };
 
   let navigate = useNavigate();
@@ -26,9 +25,9 @@ const CartPage = (props) => {
     navigate("/checkout");
   };
 
-  const mapCart = productsInCart.map((item, index) => {
+  const mapCart = productsInCart.map((item) => {
     return (
-      <div key={index}>
+      <div key={item.showProduct.id}>
         <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
           <div className="flex w-2/5">
             <div className="w-20">
@@ -40,7 +39,7 @@ const CartPage = (props) => {
               </span>
               <button
                 className="font-semibold hover:text-red-500 text-gray-500 text-xs text-left"
-                onClick={handleRemoveFromCart}
+                onClick={() => handleRemoveFromCart(item.showProduct.id)}
               >
                 Remove
               </button>

@@ -5,7 +5,7 @@ import Product from "./Product";
 import userContext from "../context/userContext";
 
 const ProductPage = (props) => {
-  console.log(props.value);
+  // console.log(props.value);
   const [product, setProduct] = useState([]);
 
   const config = {
@@ -23,7 +23,7 @@ const ProductPage = (props) => {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [product]);
 
   return (
     <>

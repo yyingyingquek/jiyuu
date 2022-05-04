@@ -52,7 +52,7 @@ function ProductDetails(props) {
       // console.log(data);
       setShowProduct(data);
     });
-  }, []);
+  }, [showProduct]);
 
   // adding to cart
   const handleAddArrToCart = () => {
@@ -93,6 +93,7 @@ function ProductDetails(props) {
   };
 
   const editProduct = async (id) => {
+    console.log(id);
     const data = JSON.stringify({
       product_name: productName,
       product_description: description,
@@ -127,14 +128,13 @@ function ProductDetails(props) {
   const handleEditProduct = (event) => {
     event.preventDefault();
 
-
     console.log(id);
-    // console.log(description);
+    console.log(price);
     editProduct(id);
     setEdit(false);
     setProductName("");
     setDescription("");
-    setPrice("");
+    setPrice(0);
     // console.log(productName)
   };
 

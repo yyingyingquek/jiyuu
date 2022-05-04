@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import userContext from "../context/userContext";
 
 const Header = () => {
+  const userCtx = useContext(userContext);
+
   let accessToken = localStorage.getItem("access_token");
   let refreshToken = localStorage.getItem("refresh_token");
   let decodedToken = localStorage.getItem("decoded_token");
@@ -11,6 +14,7 @@ const Header = () => {
     accessToken = localStorage.removeItem("access_token");
     refreshToken = localStorage.removeItem("refresh_token");
     decodedToken = localStorage.removeItem("decoded_token");
+    userCtx.setSuperUser(false);
     navigate("/home");
   };
 
@@ -59,12 +63,12 @@ const Header = () => {
               >
                 Shop
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
                 to="/lookbook"
               >
                 Lookbook
-              </NavLink>
+              </NavLink> */}
 
               {accessToken === null ? (
                 ""

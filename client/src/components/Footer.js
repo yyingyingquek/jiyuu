@@ -34,11 +34,11 @@ const Footer = () => {
                   Our Brand
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to="/sizing" className="hover:text-indigo-500">
                   Sizing
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="px-4">
