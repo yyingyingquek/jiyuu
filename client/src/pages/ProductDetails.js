@@ -4,7 +4,8 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import placeholder from "../images/placeholder.jpeg";
 
-function ProductDetails() {
+function ProductDetails(props) {
+  // console.log(props.value);
   // fetching states
   const [showProduct, setShowProduct] = useState([]);
 
@@ -23,11 +24,11 @@ function ProductDetails() {
   const reduceQuantity = () => {
     setQuantity(quantity - 1);
   };
-  
+
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
   };
-  
+
   // cart states
   const cartCtx = useContext(cartContext);
 
@@ -51,13 +52,13 @@ function ProductDetails() {
       // console.log(data);
       setShowProduct(data);
     });
-  }, [showProduct, description, productName, price]);
+  }, []);
 
   // adding to cart
   const handleAddArrToCart = () => {
     // cartArr.push(showProduct);
     console.log(showProduct);
-    cartCtx.setCart([...cartCtx.cart, {showProduct, quantity}]);
+    cartCtx.setCart([...cartCtx.cart, { showProduct, quantity }]);
     // navigate(`/cart`);
   };
 
@@ -125,8 +126,10 @@ function ProductDetails() {
 
   const handleEditProduct = (event) => {
     event.preventDefault();
+
+
     console.log(id);
-    console.log(description);
+    // console.log(description);
     editProduct(id);
     setEdit(false);
     setProductName("");
@@ -152,7 +155,6 @@ function ProductDetails() {
                 alt="product"
               />
             </div>
-
             <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
               {edit ? (
                 <div>
@@ -186,6 +188,7 @@ function ProductDetails() {
                   </span>
                 </div>
               )}
+
               <hr className="my-3" />
               <div className="mt-2">
                 <label className="text-gray-700 text-sm" htmlFor="Quantity">
@@ -253,7 +256,8 @@ function ProductDetails() {
                 >
                   Add to Cart
                 </button>
-                {edit ? (
+
+                {!props.value.superUser ? null : edit ? (
                   <>
                     <button
                       className="mx-1 px-3 py-2 bg-indigo-300 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
@@ -294,3 +298,37 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
+
+{
+  /* {edit ? (
+                  <>
+                    <button
+                      className="mx-1 px-3 py-2 bg-indigo-300 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                      onClick={handleEditProduct}
+                    >
+                      Submit
+                    </button>
+                    <button
+                      className="px-3 py-2 bg-indigo-300 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                      onClick={handleCancelEdit}
+                    >
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="mx-1 px-3 py-2 bg-indigo-300 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                      onClick={handleEditClick}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="px-3 py-2 bg-indigo-100 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                      onClick={handleDeleteProduct}
+                    >
+                      Delete
+                    </button>
+                  </>
+                )} */
+}

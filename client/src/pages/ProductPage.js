@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 // import placeholder from "../images/placeholder.jpeg";
 import Product from "./Product";
+import userContext from "../context/userContext";
 
-const ProductPage = () => {
+const ProductPage = (props) => {
+  console.log(props.value);
   const [product, setProduct] = useState([]);
 
   const config = {
@@ -26,7 +28,7 @@ const ProductPage = () => {
   return (
     <>
       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 px-4">
-        <Product product={product} />
+        <Product product={product} user={props.value} />
       </div>
     </>
   );

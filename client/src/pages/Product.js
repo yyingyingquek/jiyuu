@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import placeholder from "../images/placeholder.jpeg";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import userContext from "../context/userContext";
 
 function Product(props) {
+  console.log(props.user);
+
+  // const userCtx = useContext(userContext);
   let navigate = useNavigate();
   // console.log(props);
 
@@ -37,9 +40,11 @@ function Product(props) {
   return (
     <>
       {mapProduct}
-      <button className="border-2 w-36 h-8" onClick={addNewProduct}>
-        Add new product
-      </button>
+      {props.user.superUser ? (
+        <button className="border-2 w-36 h-8" onClick={addNewProduct}>
+          Add new product
+        </button>
+      ) : null}
     </>
   );
 }

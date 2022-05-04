@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import userContext from "../context/userContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassWord] = useState("");
+
+  const userCtx = useContext(userContext);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -37,7 +40,7 @@ const LoginPage = () => {
     };
 
     const response = await axios(config).then((response) => {
-      console.log(response.data)
+      console.log(response.data);
       localStorage.setItem("access_token", response.data.access);
       localStorage.setItem("refresh_token", response.data.refresh);
       console.log(response);
@@ -46,13 +49,19 @@ const LoginPage = () => {
       console.log(token);
       const decoded = jwt_decode(token);
       console.log(decoded);
-      localStorage.setItem('decoded_token', JSON.stringify(decoded))
+      localStorage.setItem("decoded_token", JSON.stringify(decoded));
+      console.log(JSON.parse(localStorage.getItem("decoded_token")));
 
+      const checkSuperUser = JSON.parse(localStorage.getItem("decoded_token"));
+      if (checkSuperUser.user_id === 1) {
+        userCtx.setSuperUser(true);
+      } else {
+        userCtx.setSuperUser(false);
+      }
     });
 
     // return response
   };
-  
 
   const handleAdminLogIn = (event) => {
     event.preventDefault();
