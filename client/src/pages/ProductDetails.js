@@ -135,7 +135,6 @@ function ProductDetails(props) {
     setProductName("");
     setDescription("");
     setPrice(0);
-    // console.log(productName)
   };
 
   const backToShop = () => {
@@ -298,37 +297,3 @@ function ProductDetails(props) {
 }
 
 export default ProductDetails;
-
-{
-  /* {edit ? (
-                  <>
-                    <button
-                      className="mx-1 px-3 py-2 bg-indigo-300 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
-                      onClick={handleEditProduct}
-                    >
-                      Submit
-                    </button>
-                    <button
-                      className="px-3 py-2 bg-indigo-300 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
-                      onClick={handleCancelEdit}
-                    >
-                      Cancel
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      className="mx-1 px-3 py-2 bg-indigo-300 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
-                      onClick={handleEditClick}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="px-3 py-2 bg-indigo-100 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
-                      onClick={handleDeleteProduct}
-                    >
-                      Delete
-                    </button>
-                  </>
-                )} */
-}

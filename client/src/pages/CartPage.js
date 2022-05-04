@@ -63,7 +63,13 @@ const CartPage = (props) => {
   return (
     <>
       {productsInCart.length === 0 ? (
-        "start shopping"
+        <div className="md:p-4 justify-center">
+          <div className="max-w-4xl px-20 py-1 mx-auto">
+            <h1 className="md:text-2xl md:font-semibold text-center">
+              Start Shopping Now!
+            </h1>
+          </div>
+        </div>
       ) : (
         <div className="container mx-auto mt-10">
           <div className="w-full bg-white px-10 py-10">

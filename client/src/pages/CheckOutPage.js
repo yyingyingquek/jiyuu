@@ -29,7 +29,7 @@ const CheckOutPage = (props) => {
             </div>
           </div>
           <span className="text-gray-600">
-            {item.showProduct.product_price}
+            ${item.showProduct.product_price}
           </span>
         </div>
       </div>
@@ -85,6 +85,7 @@ const CheckOutPage = (props) => {
 
     const response = await axios(config);
     console.log(response);
+    props.setOrderNum(response.data);
   };
 
   let navigate = useNavigate();
@@ -204,7 +205,7 @@ const CheckOutPage = (props) => {
                         <h3 className="text-gray-700 font-medium">
                           Order total
                         </h3>
-                        <span className="text-gray-600 text-sm">Edit</span>
+
                       </div>
                       {mapCheckOut}
                       <div className="flex justify-between mt-6">

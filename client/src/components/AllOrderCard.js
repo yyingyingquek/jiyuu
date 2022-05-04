@@ -15,17 +15,14 @@ const AllOrderCard = (props) => {
   };
 
   const handleStatusClick = () => {
-    updateAsDelivered()
+    updateAsDelivered();
     setStatus(true);
   };
 
   return (
     <tbody>
-      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th
-          scope="row"
-          className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-        >
+      <tr className="bg-white border-b ">
+        <th scope="row" className="px-6 py-4 font-medium text-gray-900 ">
           {props.id}
         </th>
         <td className="px-6 py-4">{props.orderDate}</td>
@@ -34,7 +31,7 @@ const AllOrderCard = (props) => {
         {props.deliveryStatus ? null : (
           <td className="px-6 py-4 text-right">
             <button
-              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              className="font-medium text-indigo-500 hover:underline"
               onClick={handleStatusClick}
             >
               Mark as delivered

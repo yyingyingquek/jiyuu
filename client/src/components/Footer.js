@@ -34,11 +34,6 @@ const Footer = () => {
                   Our Brand
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink to="/sizing" className="hover:text-indigo-500">
-                  Sizing
-                </NavLink>
-              </li> */}
             </ul>
           </div>
           <div className="px-4">
@@ -96,7 +91,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* <hr className="my-1 border-gray-200 sm:mx-auto " /> */}
+
       <div className="sm:flex sm:items-center sm:justify-center py-4">
         <span className="text-xs text-gray-500 sm:text-center dark:text-gray-400">
           © 2022 Placeholder text

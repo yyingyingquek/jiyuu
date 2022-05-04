@@ -1,7 +1,6 @@
 import React from "react";
 
 const ContactUsPage = () => {
-
   const handleButtonPreventDefault = (event) => {
     event.preventDefault();
   };

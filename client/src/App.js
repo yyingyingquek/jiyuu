@@ -22,6 +22,7 @@ import cartContext from "./context/cartContext";
 function App() {
   const [cart, setCart] = useState([]);
   const [superUser, setSuperUser] = useState(false);
+  const [orderNum, setOrderNum] = useState([]);
   console.log(superUser);
   console.log(cart);
 
@@ -50,11 +51,23 @@ function App() {
               ></Route>
               <Route
                 path="/checkout"
-                element={<CheckOutPage value={{ cart, setCart }} />}
+                element={
+                  <CheckOutPage
+                    value={{ cart, setCart }}
+                    orderNum={orderNum}
+                    setOrderNum={setOrderNum}
+                  />
+                }
               ></Route>
               <Route
                 path="/payment"
-                element={<PaymentPage value={{ cart, setCart }} />}
+                element={
+                  <PaymentPage
+                    value={{ cart, setCart }}
+                    orderNum={orderNum}
+                    setOrderNum={setOrderNum}
+                  />
+                }
               ></Route>
               <Route path="/order" element={<OrderPage />}></Route>
               <Route path="/aboutus" element={<AboutUsPage />}></Route>

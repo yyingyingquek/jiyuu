@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from account.serializers import UserSerializer
 from .models import *
+from django.forms import ModelForm
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -46,16 +47,7 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = '__all__'
 
-    # def get_order(self, obj):
-    #     items = obj.order_set.all()
-    #     serializer = OrderProductSerializer(items, many=True)
-    #     return serializer.data
-    #
-    # def get_address(self, obj):
-    #     address = AddressSerializer(obj.address, many=False)
-    #     return address
-    #
-    # def get_user(self, obj):
-    #     user = obj.user
-    #     serializer = UserSerializer(user, many=False)
-    #     return serializer.data
+
+class PhotoForm(ModelForm):
+    class Meta:
+        model = Photo

@@ -6,6 +6,8 @@ const AddProduct = () => {
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
+  const [image, setImage] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   const handleProductNameChange = (event) => {
     setProductName(event.target.value);
@@ -19,11 +21,16 @@ const AddProduct = () => {
     setPrice(event.target.value);
   };
 
+  const handleImageChange = (event) => {
+    setImage(event.target.value);
+  };
+
   const addNewProduct = async () => {
     const data = JSON.stringify({
       product_name: productName,
       product_description: description,
       product_price: price,
+      product_image: image,
     });
 
     const config = {
@@ -50,24 +57,53 @@ const AddProduct = () => {
     navigate("/shop");
   };
 
+  const handleUploadImage = async (event) => {
+    console.log("image is uploading");
+    console.log(event);
+    const file = event.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    // formData.append('product_id', productId)
+  };
+
   return (
-    <div className="p-4">
-      <form onSubmit={handleAddNewProduct}>
-        <label htmlFor="productname">Product Name: </label>
-        <input className="border-2" onChange={handleProductNameChange}></input>
-        <br />
-        <label htmlFor="description">Product Description: </label>
-        <input className="border-2" onChange={handleDescriptionChange}></input>
-        <br />
-        <label htmlFor="price">Price: </label>
-        <input
-          type="number"
-          className="border-2"
-          onChange={handlePriceChange}
-        ></input>
-        <br />
-        <button className="border-2">Add Product</button>
-      </form>
+    <div className="md:p-4 justify-center">
+      <div className="max-w-4xl px-20 py-1 mx-auto">
+        <h1 className="md:text-2xl md:font-semibold ">Add a Product</h1>
+        <form className="py-4" onSubmit={handleAddNewProduct}>
+          <label className="py-1" htmlFor="productname">
+            Product Name:{" "}
+          </label>
+          <input
+            className="border-2 my-1 w-full"
+            onChange={handleProductNameChange}
+          ></input>
+          <label htmlFor="description">Product Description: </label>
+          <input
+            className="border-2 my-1 w-full"
+            onChange={handleDescriptionChange}
+          ></input>
+          <label htmlFor="price">Price: </label>
+          <input
+            type="number"
+            className="border-2 my-1 w-full"
+            onChange={handlePriceChange}
+          ></input>
+          <label htmlFor="price">Product Image: </label>
+          <input
+            type="text"
+            value={image}
+            className="border-2 my-1 w-full"
+            onChange={handleImageChange}
+          ></input>
+          <input
+            type="file"
+            className="border-2 my-1 w-full"
+            onChange={handleUploadImage}
+          ></input>
+          <button className="border-2 p-1">Add Product</button>
+        </form>
+      </div>
     </div>
   );
 };
