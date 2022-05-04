@@ -5,6 +5,7 @@ from main_app.serializers import *
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import status
 from account.models import Account
+from datetime import datetime
 
 
 # Create your views here.
@@ -38,21 +39,25 @@ class GetOrderByID(APIView):
     # permission_classes = (IsAuthenticated,)
 
     def get(self, request, fk):
-        # user = Account.objects.all()
-        # print(user.id)
-        # order = Order.objects.raw('SELECT * FROM main_app_order WHERE user_id=1')
         order = Order.objects.filter(user=fk)
         # if user.is_admin or order.user == user:
         serializer = OrderSerializer(order, many=True)
         return Response(serializer.data)
 
 
+class UpdateOrderToPaid(APIView):
+    def put(self, request, pk):
+        order = Order.objects.get(id=pk)
+        order.payment_status = True
+        order.payment_date = datetime.now()
+        order.save()
+        return Response('paid')
 
 
-
-# class CreateAddress(APIView):
-#     def post(self, request):
-#         serializer = AddressSerializer(data=request.data, many=False)
-#         if serializer.is_valid():
-#             serializer.save()
-#         return Response(serializer.data)
+class UpdateOrderToDelivered(APIView):
+    def put(self, request, pk):
+        order = Order.objects.get(id=pk)
+        order.delivery_status = True
+        order.delivered_date = datetime.now()
+        order.save()
+        return Response('delivered')

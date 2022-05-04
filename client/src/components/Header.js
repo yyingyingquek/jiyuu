@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
 
-const Header = () => {
+const Header = (props) => {
   const userCtx = useContext(userContext);
 
   let accessToken = localStorage.getItem("access_token");
@@ -63,6 +63,14 @@ const Header = () => {
               >
                 Shop
               </NavLink>
+              {props.value.superUser ? (
+                <NavLink
+                  className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                  to="/all-orders"
+                >
+                  All Orders
+                </NavLink>
+              ) : null}
               {/* <NavLink
                 className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
                 to="/lookbook"
