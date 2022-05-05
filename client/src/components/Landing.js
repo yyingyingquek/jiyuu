@@ -19,77 +19,81 @@ const Landing = () => {
 
   return (
     <>
-      <section className="bg-white justify-center">
-        <div className="max-w-6xl px-20 py-16 mx-auto">
-          <div className="items-center md:flex md:space-x-6">
-            <div className="md:w-1/2">
-              <h3 className="text-2xl font-semibold text-gray-800">
-                Lorem ipsum dolor sit <br />
-                amet, consectetur
-              </h3>
-              <p className="max-w-md mt-4 text-gray-600">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-              <NavLink
-                to="/shop"
-                className="block mt-8 border-2 w-24 text-center hover:bg-indigo-300"
-              >
-                Shop Now
-              </NavLink>
-            </div>
-
-            <div className="mt-8 md:mt-0 md:w-1/2">
-              <div className="flex items-center justify-center">
-                <div className="max-w-md">
-                  <img
-                    className="object-cover object-center w-full rounded-md shadow"
-                    src={placeholder}
-                  ></img>
-                </div>
-              </div>
-            </div>
+      <div
+        id="carouselExampleCrossfade"
+        className="carousel slide carousel-fade relative"
+        data-bs-ride="carousel"
+      >
+        <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCrossfade"
+            data-bs-slide-to="0"
+            className="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCrossfade"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCrossfade"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div className="carousel-inner relative w-full overflow-hidden">
+          <div className="carousel-item active float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+              className="block w-full"
+              alt="Wild Landscape"
+            />
+          </div>
+          <div className="carousel-item float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+              className="block w-full"
+              alt="Camera"
+            />
+          </div>
+          <div className="carousel-item float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+              className="block w-full"
+              alt="Exotic Fruits"
+            />
           </div>
         </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="max-w-5xl px-6 py-16 mx-auto">
-          <div className="items-center md:flex md:space-x-6">
-            <div className="md:w-1/2">
-              <div className="flex items-center justify-center">
-                <div className="max-w-md">
-                  <img
-                    className="object-cover object-center w-full rounded-md shadow"
-                    src={placeholder}
-                  ></img>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 md:mt-0 md:w-1/2">
-              <h3 className="text-2xl font-semibold text-gray-800">
-                Lorem ipsum dolor sit <br />
-                amet, consectetur
-              </h3>
-              <p className="max-w-md mt-4 text-gray-600">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-              <NavLink
-                to="/shop"
-                className="block mt-8 border-2 w-24 text-center hover:bg-indigo-300"
-              >
-                Shop Now
-              </NavLink>
-            </div>
-          </div>
-        </div>
-      </section>
+        <button
+          className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselExampleCrossfade"
+          data-bs-slide="prev"
+        >
+          <span
+            className="carousel-control-prev-icon inline-block bg-no-repeat"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleCrossfade"
+          data-bs-slide="next"
+        >
+          <span
+            className="carousel-control-next-icon inline-block bg-no-repeat"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
     </>
   );
 };

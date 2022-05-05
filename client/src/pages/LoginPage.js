@@ -7,6 +7,7 @@ import userContext from "../context/userContext";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassWord] = useState("");
+  const [successfulLogIn, setSuccessfulLogIn] = useState(false);
 
   const userCtx = useContext(userContext);
 
@@ -39,36 +40,46 @@ const LoginPage = () => {
       data: data,
     };
 
-    const response = await axios(config).then((response) => {
-      console.log(response.data);
-      localStorage.setItem("access_token", response.data.access);
-      localStorage.setItem("refresh_token", response.data.refresh);
-      console.log(response);
+    const response = await axios(config)
+      .then((response) => {
+        setSuccessfulLogIn(true);
+        console.log(response.data);
+        localStorage.setItem("access_token", response.data.access);
+        localStorage.setItem("refresh_token", response.data.refresh);
+        console.log(response);
 
-      const token = localStorage.getItem("access_token");
-      console.log(token);
-      const decoded = jwt_decode(token);
-      console.log(decoded);
-      localStorage.setItem("decoded_token", JSON.stringify(decoded));
-      console.log(JSON.parse(localStorage.getItem("decoded_token")));
+        const token = localStorage.getItem("access_token");
+        console.log(token);
+        const decoded = jwt_decode(token);
+        console.log(decoded);
+        localStorage.setItem("decoded_token", JSON.stringify(decoded));
+        console.log(JSON.parse(localStorage.getItem("decoded_token")));
 
-      const checkSuperUser = JSON.parse(localStorage.getItem("decoded_token"));
-      if (checkSuperUser.user_id === 1) {
-        userCtx.setSuperUser(true);
-      } else {
-        userCtx.setSuperUser(false);
-      }
-    });
+        const checkSuperUser = JSON.parse(
+          localStorage.getItem("decoded_token")
+        );
+        if (checkSuperUser.user_id === 1) {
+          userCtx.setSuperUser(true);
+        } else {
+          userCtx.setSuperUser(false);
+        }
+        navigate("/home");
+      })
+      .catch((error) => {
+        setSuccessfulLogIn(false);
+        console.log(error);
+        alert("Please enter the correct email or password");
+      });
 
-    // return response
+    return response;
   };
+  console.log(successfulLogIn);
 
   const handleAdminLogIn = (event) => {
     event.preventDefault();
     logIn();
     setEmail("");
     setPassWord("");
-    navigate("/home");
   };
 
   return (
@@ -86,6 +97,7 @@ const LoginPage = () => {
               className="form-input mt-1 block w-full rounded-md border-2"
               //   required
               autoComplete="email"
+              value={email}
               onChange={handleEmailChange}
             />
           </label>
@@ -99,6 +111,7 @@ const LoginPage = () => {
               name="password"
               //   required
               autoComplete="current-password"
+              value={password}
               onChange={handlePasswordChange}
             />
           </label>
@@ -110,8 +123,6 @@ const LoginPage = () => {
             >
               Login
             </button>
-            {/* {storeAuth ? "logged in" : "logged out"}
-            {storeEmail} */}
           </div>
         </form>
       </div>
