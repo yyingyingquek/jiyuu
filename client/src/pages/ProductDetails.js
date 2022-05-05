@@ -150,7 +150,7 @@ function ProductDetails(props) {
               <button onClick={backToShop}>back to shop</button>
               <img
                 className="h-full w-full rounded-md object-cover max-w-lg mx-auto"
-                src={placeholder}
+                src={showProduct.product_image}
                 alt="product"
               />
             </div>

@@ -88,5 +88,5 @@ class Order_Product(models.Model):
 #         return str(f'{self.id}, {self.order}, {self.address}')
 
 
-class Photo(models.Model):
-    image = CloudinaryField('image')
+# class Photo(models.Model):
+#     image = CloudinaryField('image')

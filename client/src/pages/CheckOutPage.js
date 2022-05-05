@@ -19,7 +19,7 @@ const CheckOutPage = (props) => {
             {calPrice.push(item.showProduct.product_price)}
             <img
               className="h-20 w-20 object-cover rounded"
-              src={placeholder}
+              src={item.showProduct.product_image}
               alt=""
             />
             <div className="mx-3">

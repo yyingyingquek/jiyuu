@@ -25,7 +25,7 @@ function Product(props) {
         <div className="w-full max-w-sm py-4 mx-auto my-1 rounded-md shadow-md overflow-hidden">
           <div
             className="flex items-end justify-end h-96 w-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${placeholder})` }}
+            style={{ backgroundImage: `url(${product.product_image})` }}
             onClick={() => handleProductClick(product.id)}
           ></div>
           <div className="px-5 py-3">

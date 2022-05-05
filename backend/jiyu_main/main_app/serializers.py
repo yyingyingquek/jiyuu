@@ -48,6 +48,6 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PhotoForm(ModelForm):
-    class Meta:
-        model = Photo
+# class PhotoForm(ModelForm):
+#     class Meta:
+#         model = Photo

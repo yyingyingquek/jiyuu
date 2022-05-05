@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'main_app',
     'api_with_jwt',
     'corsheaders',
+    'cloudinary_storage'
 ]
 
 MIDDLEWARE = [
@@ -140,7 +141,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-MEDIA_ROOT = 'static/images'
+# MEDIA_ROOT = 'static/images/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -184,3 +186,9 @@ SIMPLE_JWT = {
 
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': "yingyingq",
+    'API_KEY': "316263727973719",
+    'API_SECRET': "cO008XGQbhtCGy7DrPZe66YE6Fc"
+}

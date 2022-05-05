@@ -6,8 +6,7 @@ const AddProduct = () => {
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [image, setImage] = useState("");
-  const [uploading, setUploading] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
 
   const handleProductNameChange = (event) => {
     setProductName(event.target.value);
@@ -21,28 +20,37 @@ const AddProduct = () => {
     setPrice(event.target.value);
   };
 
-  const handleImageChange = (event) => {
-    setImage(event.target.value);
-  };
-
   const addNewProduct = async () => {
-    const data = JSON.stringify({
-      product_name: productName,
-      product_description: description,
-      product_price: price,
-      product_image: image,
-    });
+    const formData = new FormData();
+    formData.append("product_name", productName);
+    formData.append("product_description", description);
+    formData.append("product_price", price);
+    formData.append("product_image", imageFile);
 
-    const config = {
-      method: "post",
-      url: "http://127.0.0.1:8000/api/create/",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
+    // console.log("boundary", formData._boundary);
+
+    // const config = {
+    //   method: "post",
+    //   url: "http://127.0.0.1:8000/api/create/",
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    //   data: formData,
+    // };
+
+    // const response = await axios(config);
+    // console.log(response);
+
+    const requestOptions = {
+      method: "POST",
+      body: formData,
+      redirect: "follow",
     };
 
-    const response = await axios(config);
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/create/",
+      requestOptions
+    );
     console.log(response);
   };
 
@@ -51,20 +59,26 @@ const AddProduct = () => {
   const handleAddNewProduct = (event) => {
     event.preventDefault();
     addNewProduct();
-    setProductName("");
-    setDescription("");
-    setPrice(0);
-    navigate("/shop");
+    console.log(productName);
+    console.log(description);
+    console.log(price);
+    console.log(imageFile);
+    // setProductName("");
+    // setDescription("");
+    // setPrice(0);
+    // setImageFile(null);
+    // navigate("/shop");
   };
 
   const handleUploadImage = async (event) => {
+    event.preventDefault();
+    console.log(event.target.files);
+    console.log(event.target.files[0]);
     console.log("image is uploading");
-    console.log(event);
-    const file = event.target.files[0]
-    const formData = new FormData()
-    formData.append('image', file)
-    // formData.append('product_id', productId)
+    // on file upload via choose file
+    setImageFile(event.target.files[0]);
   };
+  // console.log(imageFile)
 
   return (
     <div className="md:p-4 justify-center">
@@ -90,17 +104,21 @@ const AddProduct = () => {
             onChange={handlePriceChange}
           ></input>
           <label htmlFor="price">Product Image: </label>
-          <input
+          {/* <input
             type="text"
             value={image}
             className="border-2 my-1 w-full"
             onChange={handleImageChange}
-          ></input>
+          ></input> */}
           <input
             type="file"
             className="border-2 my-1 w-full"
             onChange={handleUploadImage}
           ></input>
+          {/* <button className="border-2 p-1" onChange={handleUploadImage}>
+            Upload Image
+          </button>{" "} */}
+          <br />
           <button className="border-2 p-1">Add Product</button>
         </form>
       </div>
