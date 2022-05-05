@@ -73,7 +73,6 @@ const LoginPage = () => {
 
     return response;
   };
-  console.log(successfulLogIn);
 
   const handleAdminLogIn = (event) => {
     event.preventDefault();
