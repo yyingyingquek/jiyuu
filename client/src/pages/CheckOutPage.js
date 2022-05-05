@@ -39,7 +39,7 @@ const CheckOutPage = (props) => {
     );
   });
 
-  console.log(calPrice);
+  // console.log(calPrice);
 
   const toInt = calPrice.map(Number);
   // console.log(toInt);

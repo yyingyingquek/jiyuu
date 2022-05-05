@@ -59,7 +59,6 @@ const AddProduct = () => {
     // on file upload via choose file
     setImageFile(event.target.files[0]);
   };
-  // console.log(imageFile)
 
   return (
     <div className="md:p-4 justify-center">
@@ -91,7 +90,6 @@ const AddProduct = () => {
           <input
             type="file"
             className="border-2 my-1 w-full"
-            value={imageFile}
             onChange={handleUploadImage}
           ></input>
           <br />

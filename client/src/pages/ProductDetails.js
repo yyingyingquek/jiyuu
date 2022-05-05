@@ -146,7 +146,7 @@ function ProductDetails(props) {
       <div className="my-8">
         <div className="container mx-auto px-6">
           <div className="md:flex md:items-center">
-            <div className="w-full h-64 md:w-1/2 lg:h-96">
+            <div className="w-full h-full md:w-1/2 lg:h-full">
               <button onClick={backToShop}>back to shop</button>
               <img
                 className="h-full w-full rounded-md object-cover max-w-lg mx-auto"

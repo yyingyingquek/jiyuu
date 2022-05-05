@@ -6,6 +6,9 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassWord] = useState("");
+  const [register, setRegister] = useState(false);
+
+  let navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -35,18 +38,27 @@ const RegisterPage = () => {
       data: data,
     };
 
-    const response = await axios(config);
-    console.log(response);
-  };
+    const response = await axios(config)
+      .then((response) => {
+        console.log(response);
+        setRegister(true);
+        navigate("/login");
+      })
+      .catch((error) => {
+        setRegister(false);
+        console.log(error);
+        alert("Sign up failed. Please re-enter the fields correctly");
+      });
 
-  let navigate = useNavigate();
+    return response;
+  };
 
   const handleRegisterSubmit = (event) => {
     event.preventDefault();
     createUser();
-    console.log(email);
-    console.log(name);
-    navigate("/login");
+    setEmail("");
+    setName("");
+    setPassWord("");
   };
 
   return (
@@ -59,6 +71,7 @@ const RegisterPage = () => {
           </label>
           <input
             className="form-input mt-1 px-1 w-full rounded-md border-2"
+            value={email}
             onChange={handleEmailChange}
           ></input>{" "}
           <br />
@@ -67,6 +80,7 @@ const RegisterPage = () => {
           </label>
           <input
             className="form-input mt-1 px-1 w-full rounded-md border-2"
+            value={name}
             onChange={handleNameChange}
           ></input>{" "}
           <br />
@@ -75,6 +89,7 @@ const RegisterPage = () => {
           </label>
           <input
             className="form-input mt-1 px-1 w-full rounded-md border-2"
+            value={password}
             type="password"
             onChange={handlePasswordChange}
           ></input>
