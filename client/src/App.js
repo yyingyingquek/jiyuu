@@ -1,4 +1,4 @@
-import React, { useState, useContext, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,6 +15,7 @@ import AddProduct from "./pages/AddProduct";
 import CheckOutPage from "./pages/CheckOutPage";
 import OrderPage from "./pages/OrderPage";
 import PaymentPage from "./pages/PaymentPage";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 import userContext from "./context/userContext";
 import cartContext from "./context/cartContext";
@@ -32,50 +33,57 @@ function App() {
         <cartContext.Provider value={{ cart, setCart }}>
           <Header value={{ superUser, setSuperUser }} />
           <main>
-            <Routes>
-              <Route path="/" element={<Navigate replace to="/home" />}></Route>
-              <Route path="/home" element={<Landing />}></Route>
-              <Route
-                path="/shop"
-                element={<ProductPage value={{ superUser, setSuperUser }} />}
-              ></Route>
-              <Route
-                path="/products/:id"
-                element={<ProductDetails value={{ superUser, setSuperUser }} />}
-              ></Route>
+            <Suspense fallback={LoadingSpinner}>
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Navigate replace to="/home" />}
+                ></Route>
+                <Route path="/home" element={<Landing />}></Route>
+                <Route
+                  path="/shop"
+                  element={<ProductPage value={{ superUser, setSuperUser }} />}
+                ></Route>
+                <Route
+                  path="/products/:id"
+                  element={
+                    <ProductDetails value={{ superUser, setSuperUser }} />
+                  }
+                ></Route>
 
-              <Route path="/all-orders" element={<AllOrdersPage />}></Route>
-              <Route
-                path="/cart"
-                element={<CartPage value={{ cart, setCart }} />}
-              ></Route>
-              <Route
-                path="/checkout"
-                element={
-                  <CheckOutPage
-                    value={{ cart, setCart }}
-                    orderNum={orderNum}
-                    setOrderNum={setOrderNum}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/payment"
-                element={
-                  <PaymentPage
-                    value={{ cart, setCart }}
-                    orderNum={orderNum}
-                    setOrderNum={setOrderNum}
-                  />
-                }
-              ></Route>
-              <Route path="/order" element={<OrderPage />}></Route>
-              <Route path="/aboutus" element={<AboutUsPage />}></Route>
-              <Route path="/contact" element={<ContactUsPage />}></Route>
-              <Route path="/login" element={<LoginPage />}></Route>
-              <Route path="/register" element={<RegisterPage />}></Route>
-              <Route path="/newproduct" element={<AddProduct />}></Route>
-            </Routes>
+                <Route path="/all-orders" element={<AllOrdersPage />}></Route>
+                <Route
+                  path="/cart"
+                  element={<CartPage value={{ cart, setCart }} />}
+                ></Route>
+                <Route
+                  path="/checkout"
+                  element={
+                    <CheckOutPage
+                      value={{ cart, setCart }}
+                      orderNum={orderNum}
+                      setOrderNum={setOrderNum}
+                    />
+                  }
+                ></Route>
+                <Route
+                  path="/payment"
+                  element={
+                    <PaymentPage
+                      value={{ cart, setCart }}
+                      orderNum={orderNum}
+                      setOrderNum={setOrderNum}
+                    />
+                  }
+                ></Route>
+                <Route path="/order" element={<OrderPage />}></Route>
+                <Route path="/aboutus" element={<AboutUsPage />}></Route>
+                <Route path="/contact" element={<ContactUsPage />}></Route>
+                <Route path="/login" element={<LoginPage />}></Route>
+                <Route path="/register" element={<RegisterPage />}></Route>
+                <Route path="/newproduct" element={<AddProduct />}></Route>
+              </Routes>
+            </Suspense>
           </main>
         </cartContext.Provider>
         <Footer />

@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="md:flex md:justify-around">
         <div className="grid grid-cols-2 gap-8 md:gap-10 md:grid-cols-3">
           <div className="px-4">
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
+            <h2 className="mb-6 text-sm font-semibold text-gray-800 uppercase">
               Links
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
@@ -25,7 +25,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="px-4">
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
+            <h2 className="mb-6 text-sm font-semibold text-gray-800 uppercase">
               About us
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
@@ -37,7 +37,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="px-4">
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">
+            <h2 className="mb-6 text-sm font-semibold text-gray-800 uppercase ">
               Contact Us
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
@@ -52,7 +52,7 @@ const Footer = () => {
               {/* facebook */}
               <a
                 href="https://www.facebook.com/JiyuActive"
-                className="text-gray-500 hover:text-gray-900 "
+                className="text-gray-500 hover:text-indigo-500 "
                 target="_blank"
               >
                 <svg
@@ -71,7 +71,7 @@ const Footer = () => {
               {/* instagram icon */}
               <a
                 href="https://www.instagram.com/jiyu_active/"
-                className="text-gray-500 hover:text-gray-900 "
+                className="text-gray-500 hover:text-indigo-500 "
                 target="_blank"
               >
                 <svg
@@ -93,8 +93,8 @@ const Footer = () => {
       </div>
 
       <div className="sm:flex sm:items-center sm:justify-center py-4">
-        <span className="text-xs text-gray-500 sm:text-center dark:text-gray-400">
-          © 2022 Placeholder text
+        <span className="text-xs text-gray-400 sm:text-center">
+          © 2022 A project by Ying Ying for Jiyū Active. Purely educational.
         </span>
       </div>
     </footer>

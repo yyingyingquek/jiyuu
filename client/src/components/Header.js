@@ -26,7 +26,7 @@ const Header = (props) => {
             className="text-gray-800 text-xl font-bold md:text-5xl hover:text-gray-700"
             to="/home"
           >
-            Jiyu
+            Jiyū Active
           </NavLink>
         </div>
         <div className="container mx-auto px-6 py-3 md:flex md:justify-center md:items-center">
