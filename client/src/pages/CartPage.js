@@ -5,7 +5,7 @@ import cartContext from "../context/cartContext";
 import placeholder from "../images/placeholder.jpeg";
 
 const CartPage = (props) => {
-  console.log(props.value.cart);
+  // console.log(props.value.cart);
   const productsInCart = props.value.cart;
   const cartCtx = useContext(cartContext);
 
@@ -50,10 +50,10 @@ const CartPage = (props) => {
           </div>
 
           <span className="text-center w-1/5 font-semibold text-sm">
-            {item.showProduct.product_price}
+            ${item.showProduct.product_price}
           </span>
           <span className="text-center w-1/5 font-semibold text-sm">
-            {(item.showProduct.product_price * item.quantity).toFixed(2)}
+            ${(item.showProduct.product_price * item.quantity).toFixed(2)}
           </span>
         </div>
       </div>

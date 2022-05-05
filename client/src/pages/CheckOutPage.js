@@ -14,9 +14,11 @@ const CheckOutPage = (props) => {
   const mapCheckOut = checkOutItems.map((item, index) => {
     return (
       <div key={index}>
+        <div className="hidden">
+          {calPrice.push(item.showProduct.product_price * item.quantity)}
+        </div>
         <div className="flex justify-between mt-6">
           <div className="flex">
-            {calPrice.push(item.showProduct.product_price)}
             <img
               className="h-20 w-20 object-cover rounded"
               src={item.showProduct.product_image}
@@ -28,15 +30,16 @@ const CheckOutPage = (props) => {
               </h3>
             </div>
           </div>
+          <span className="text-gray-600">{item.quantity}</span>
           <span className="text-gray-600">
-            ${item.showProduct.product_price}
+            ${(item.showProduct.product_price * item.quantity).toFixed(2)}
           </span>
         </div>
       </div>
     );
   });
 
-  // console.log(calPrice);
+  console.log(calPrice);
 
   const toInt = calPrice.map(Number);
   // console.log(toInt);
@@ -205,13 +208,25 @@ const CheckOutPage = (props) => {
                         <h3 className="text-gray-700 font-medium">
                           Order total
                         </h3>
-
+                        <h3 className="text-gray-700 font-medium">Qty</h3>
+                        <h3 className="text-gray-700 font-medium">Price</h3>
                       </div>
                       {mapCheckOut}
                       <div className="flex justify-between mt-6">
                         <div className="flex">
-                          <span className="relative left-64">{totalPrice}</span>
+                          <img
+                            className="hidden h-20 w-20 object-cover rounded"
+                            src={placeholder}
+                            alt=""
+                          />
+                          <div className="mx-3">
+                            <h3 className="hidden text-sm">
+                              hello name
+                            </h3>
+                          </div>
                         </div>
+                        <span className="hidden">2</span>
+                        <span className="text-gray-600">${totalPrice}</span>
                       </div>
                     </div>
                   </div>
