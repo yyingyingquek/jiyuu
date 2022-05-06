@@ -16,16 +16,16 @@ React router 6 was used for the routing of the different pages.
 Tailwindcss was implemented for the app.
 
 ERD diagram
-![ERD diagram](/readmeimages/ERD.png)
+![ERD diagram](/client/readmeimages/ERD.png)
 
 React setup
-![React Setup](/readmeimages/React_setup.png)
+![React Setup](/client/readmeimages/React_setup.png)
 
 ## Wireframes
 
-![Homepage](/readmeimages/Homepage.png)
-![All Products](/readmeimages/All_products.png)
-![Single Product](/readmeimages/SingleProduct.png)
+![Homepage](/client/readmeimages/Homepage.png)
+![All Products](/client/readmeimages/All_products.png)
+![Single Product](/client/readmeimages/SingleProduct.png)
 
 Wireframes are also on [figma](https://www.figma.com/file/kIcHzCl717uECx40ivAsnS/Jiyuu-Active?node-id=0%3A1)
 
