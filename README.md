@@ -46,4 +46,4 @@ CSS
 Huge thanks to [khatabwedaa](https://tailwindcomponents.com/u/khatabwedaa) as many of the styling was modified from his templates on [tailwindcomponenents](https://tailwindcomponents.com)
 
 Images
-All images are not my own. Landing page images are kindly provided to me by the Jiyū Active. Product images are from Gym Wear Active.
+All images are not my own. Landing page images are kindly provided to me by the Jiyū Active. Product images are from Gym Wear Active, which will be replaced by images from Jiyū Active products upon deployment
