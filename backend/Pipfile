@@ -12,6 +12,9 @@ pillow = "*"
 django-cors-headers = "*"
 cloudinary = "*"
 django-cloudinary-storage = "*"
+gunicorn = "*"
+whitenoise = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
