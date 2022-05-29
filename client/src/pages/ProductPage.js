@@ -23,7 +23,7 @@ const ProductPage = (props) => {
 
   useEffect(() => {
     fetchProducts();
-  }, [product]);
+  }, []);
 
   return (
     <>

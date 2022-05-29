@@ -29,6 +29,11 @@ React setup
 
 Wireframes are also on [figma](https://www.figma.com/file/kIcHzCl717uECx40ivAsnS/Jiyuu-Active?node-id=0%3A1)
 
+## Final Images
+![Homepage](/client/readmeimages/app_homepage.png)
+![Shop](/client/readmeimages/app_shop.png)
+![MobileView](/client/readmeimages/app_shop_mobile.png)
+
 ## Approach Taken
 
 As this is a project that has to be completed in a week, it is definitely a challenge. The approach I took was to get started on the backend models, serializers and views. Once most of the items were done, I moved on to frontend using ReactJS to get all the admin functions working. Then followed by the users views. While working on the frontend, if there were any further views required on the backend that were missed out, I went back to create the views and url patterns accordingly.
@@ -42,8 +47,8 @@ As this is a project that has to be completed in a week, it is definitely a chal
 
 ### Credits
 
-CSS
+CSS \
 Huge thanks to [khatabwedaa](https://tailwindcomponents.com/u/khatabwedaa) as many of the styling was modified from his templates on [tailwindcomponenents](https://tailwindcomponents.com)
 
-Images
-All images are not my own. Landing page images are kindly provided to me by the Jiyū Active. Product images are from Gym Wear Active, which will be replaced by images from Jiyū Active products upon deployment
+Images \
+All images are not my own. All images are kindly provided to me by Jiyū Active.
